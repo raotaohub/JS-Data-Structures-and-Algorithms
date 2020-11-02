@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<!-- 一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
+
+    n = 1 时 2种
+    n = 2 时 2种 
+    n = 3 时 1+1+1 1种   1+2  1种  2+1 1种  共3种
+-->
+
+<body>
+  <script>
+    // 1、第一递归函数功能
+    function hamazi(n) {
+      // 2、找出递归结束的条件
+      if (n <= 2) {
+        return n
+      }
+      // 第三要素：找出函数的等价关系式
+      return hamazi(n - 1) + hamazi(n - 2)
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>
