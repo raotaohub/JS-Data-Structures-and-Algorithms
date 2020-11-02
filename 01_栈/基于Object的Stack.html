@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    栈结构：遵循先进后出(LIFO)原则的有序集合，新添加或待删除的元素都保存在栈顶，另一端叫栈底。
+    在栈里新的元素都靠近栈顶，旧的元素都接近栈底。
+      栈的几个功能
+      push(element(s)): 添加一个或多个元素到栈顶 
+      pop():            移除栈顶的元素，同时返回该元素 
+      peek():           返回栈顶的元素
+      isEmpty():        检查栈是否为空，为空返回true，不为空返回false
+      clear():          移除栈里所有元素
+      size() :          返回栈里的个数
+    */
+    class Stack {
+      constructor() {
+        this.count = 0
+        this.items = {}
+      }
+      // push(element(s)): 添加一个或多个元素到栈顶
+      push(element) {
+        this.items[this.count] = element
+        this.count++
+      }
+      // pop():            移除栈顶的元素，同时返回该元素 
+      pop() {
+        // 先判断栈是否为空 为空抛出 undefined
+        if (this.isEmpty()) {
+          return undefined
+        }
+        this.count--
+        const result = this.items[count]
+        delete this.items[count]
+        return result
+      }
+      // peek():           返回栈顶的元素
+      peak() {
+        // 先判断栈是否为空 为空抛出 undefined
+        if (this.isEmpty()) {
+          return undefined
+        }
+        return this.items[this.count - 1]
+      }
+      // isEmpty():        检查栈是否为空，为空返回true，不为空返回false
+      isEmpty() {
+        return this.count === 0
+      }
+      // clear():          移除栈里所有元素
+      clear() {
+        while (this.isEmpty()) {
+          this.pop()
+        }
+      }
+      // size() :          返回栈里的个数
+      size() {
+        return this.count
+      }
+      // toString()
+      toString() {
+        if (this.isEmpty()) {
+          return ''
+        }
+        // 从下标为 0 开始
+        let objString = `${this.items[0]}`
+        for (let i = 1; i < this.count; i++) {
+          objString = `${objString},${this.items[i]}`
+        }
+        return objString
+      }
+    }
+    const stack = new Stack()
+    stack.push('阿巴阿巴1')
+    stack.push('阿巴阿巴2')
+    stack.push('阿巴阿巴3')
+    stack.push('阿巴阿巴3')
+    stack.push('阿巴阿巴3')
+    console.log(stack)
+
+    console.log(stack.toString())
+
+    console.log(Object.getOwnPropertyNames(stack))
+    console.log(Object.keys(stack))
+    console.log(Object.getOwnPropertySymbols(stack))
+    stack.push(1)
+    stack.push(5)
+    let objectSymbols = Object.getOwnPropertySymbols(stack)
+    console.log(objectSymbols.length)
+
+
+  </script>
+</body>
+
+</html>
