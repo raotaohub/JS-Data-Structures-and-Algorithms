@@ -136,7 +136,7 @@ function palindromeChecker(aString) {
     return false
   }
   const deque = new Deque()
-  const lowerString = aString.toLocaleLowerCase().split(' ').join('')
+  const lowerString = aString.toLocaleLowerCase().split(' ').join('') // 转换成小写，按空格分割成数组，按空串返回字符串
   let isEgual = true
   let firstChar, lastChar
   // 把所有字符入列

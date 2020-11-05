@@ -108,7 +108,7 @@
         return intersection
       }
 
-      // difference(otherSet)
+      // difference(otherSet)     差集
       difference(otherSet) {
         const differenceSet = new Set()
         this.values().forEach(value => {              // 遍历当前Set实例的所有 元素
@@ -118,7 +118,7 @@
         })
         return differenceSet
       }
-      // isSubsetOf(otherSet)
+      // isSubsetOf(otherSet)     子集
       isSubsetOf(otherSet) {
         if (this.size() > otherSet.size()) {
           return false

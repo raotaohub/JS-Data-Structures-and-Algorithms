@@ -57,7 +57,7 @@ class BinarySearchTree {
     }
   }
   // 在树中查找一个键，以布尔值返回
-  search(key) {                         
+  search(key) {
     return this.searchNode(this.root, key)
   }
   searchNode(node, key) {
@@ -133,10 +133,37 @@ class BinarySearchTree {
     }
     return undefined
   }
-  remove(key) {
-    if (this.search(key)) {
-
+  // 移除
+  removeNode(node, key) {
+    if (this.root == null) {
+      return null
     }
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {                      // 传入比较函数，判断key值在左侧
+      node.left = this.removeNode(node.left, key)//？？？。。
+      return node
+    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {             // 传入比较函数，判断key值在右侧
+      node.right = this.removeNode(node.right, key)//？？？。。
+      return node
+    } else {                                                                        // 进入这一步说明 node == key 已经找到了
+      if (node.left == null && node.left == null) {
+        node = null                                                   // 1 如果该节点没有 左右的子节点 直接将节点null
+        return node
+      }
+      if (node.left == null) {                                        // 2.1 如果左节点是空的 将右节点赋值给node
+        node = node.right
+        return node
+      } else if (node.right == null) {                                // 2.2 如果右节点是空的 将左节点赋值给node
+        node = node.left
+        return node
+      }                                                               // 3 若该节点有左右子节点
+      const aux = this.minNode(node.right)                            //   找到该节点右侧子树的最小节点
+      node.key = aux.key                                              //   移除该节点，替换为原右侧子树的最小节点      
+      node.right = this.removeNode(node.right, aux.key)               //   移除该节点（原右侧子树的最小节点）？？？。。
+      return node                                                     //   向父节点返回更新后节点的引用 ？？？。。
+    }
+  }
+  remove(key) {
+    this.root = this.removeNode(this.root, key)
   }
 }
 
@@ -156,16 +183,20 @@ tree.insert(20)
 tree.insert(18)
 tree.insert(25)
 
-
 tree.insert(6)
 
 console.log(tree)
 
 const printNode = value => console.log(value)
 tree.inOrderTraverse(printNode)
-console.log('——————————————————————————————————————————先序遍历——————————————————————————————————————————')
+console.log('————————————————————————————————————————先序遍历————————————————————————————————————————')
 tree.preOrderTraverse(printNode)
 
 console.log('——————————————————————————————————————————查找——————————————————————————————————————————')
 console.log(tree.search(1) ? 'key 1 found' : 'key 1 not found')
 console.log(tree.search(25) ? 'key 25 found' : 'key 25 not found')
+console.log('——————————————————————————————————————————移除——————————————————————————————————————————')
+tree.remove(6)
+tree.remove(5)
+tree.remove(15)
+console.log(tree)

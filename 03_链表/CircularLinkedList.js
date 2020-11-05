@@ -167,9 +167,9 @@ class CircularLinkedList extends LinkedList {
           current.next = this.head                  // 新增
         }
       } else {
-        const previous = this.getElementAt(index - 1)
-        const current = previous.next
-        node.next = current
+        const previous = this.getElementAt(index - 1)       // 找到要插入位置前一个崽
+        const current = previous.next                       // 找到被插入位置当前的崽
+        node.next = current                                 // 
         previous.next = node
       }
       this.count++
