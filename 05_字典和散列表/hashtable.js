@@ -27,6 +27,14 @@ class HashTable {
     this.toStrFn = toStrFn
     this.table = {}
   }
+  djb2HashCode(key) {                                    // 社区最受推崇的散列函数之一
+    const tableKey = this.toStrFn(key)
+    let hash = 5381
+    for (let i = 0; i < tableKey.length; i++) {
+      hash = (has * 33) + tableKey.charCodeAt(i)
+    }
+    return hash % 1013
+  }
   loseloseHashCode(key) {
     if (typeof key === 'number') {
       return key

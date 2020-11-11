@@ -25,8 +25,6 @@ class Node {
   min()                  返回树中 最小的 键/值
   max()                  返回树中 最大的 键/值
   remove()               移除某个键
-
-
 */
 class BinarySearchTree {
   constructor(compareFn = defaultCompare) {
@@ -200,3 +198,4 @@ tree.remove(6)
 tree.remove(5)
 tree.remove(15)
 console.log(tree)
+

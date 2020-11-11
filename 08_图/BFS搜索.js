@@ -19,9 +19,9 @@ class ValuePair {
 }
 /*
   字典以[键,值]的方式存储元素  
-  set(key,value)    向字典添加新元素
-  remove(key)       移除对应key的元素
-  hasKey(key)       检查对应的key是否存在字典中，若有返回true 若无返回false
+  set(key,value)
+  remove(key)
+  hasKey(key)
   get(key)
   clear()
   size()
@@ -58,7 +58,7 @@ class Dictionary {
   hasKey(key) {
     return this.table[this.toStrFn(key)] != null                  // 检查一下table里这个key名是否已经存在了
   }
-  // get(key)             根据key，返回对应的值
+  // get(key)
   get(key) {
     const valuePair = this.table[this.toStrFn(key)]               // 获得该值
     return valuePair == null ? undefined : valuePair.value        // 判断 
@@ -117,30 +117,60 @@ class Dictionary {
     return objString
   }
 }
+class Graph {
+  constructor(isDirected = false) {
+    this.isDirected = isDirected
+    this.vertices = []
+    this.abjList = new Dictionary()
+  }
+  addVertex(v) {                      // 添加一个顶点
+    if (!this.vertices.includes(v)) {
+      this.vertices.push(v)           // 添加到顶点列表中
+      this.abjList.set(v, [])         // 向字典添加新元素，将v作为key，[]数组为值
+    }
+  }
+  addEdge(v, w) {                      // 添加一个边，为两个顶点建立关系
+    if (!this.abjList.get(v)) {        // 若v或w不存在于图中，则将v或w添加到图里
+      this.addVertex(v)
+    }
+    if (!this.abjList.get(w)) {
+      this.addVertex(w)
+    }
+    this.abjList.get(v).push(w)
+    if (!this.isDirected) {
+      this.abjList.get(w).push(v)
+    }
+  }
+  getVertices() {
+    return this.vertices
+  }
+  getAbjList() {
+    return this.abjList
+  }
+  toString() {
+    let s = ''
+    for (let i = 0; i < this.vertices.length; i++) {
+      s += `${this.vertices[i]} -> `
+      const neighbors = this.abjList.get(this.vertices[i])
+      for (let j = 0; j < neighbors.length; j++) {
+        s += `${neighbors[j]}`
+      }
+      s += `\n`
+    }
+    return s
+  }
+}
 
-const dictionary = new Dictionary();
+const Colors = {
+  WHITE: 0,
+  GREY: 1,
+  BLACK: 2
+}
 
-dictionary.set('Gandalf', 'gandalf@email.com');
-dictionary.set('John', 'johnsnow@email.com');
-dictionary.set('Tyrion', 'tyrion@email.com');
-
-console.log(dictionary.hasKey('Gandalf')); // true
-console.log(dictionary.size()); // 3
-
-console.log(dictionary.keys()); // ["Gandalf", "John", "Tyrion"]
-console.log(dictionary.values()); // ["gandalf@email.com", "johnsnow@email.com", "tyrion@email.com"]
-console.log(dictionary.get('Tyrion')); // tyrion@email.com
-
-dictionary.remove('John');
-
-console.log(dictionary.keys()); // ["Gandalf", "Tyrion"]
-console.log(dictionary.values()); // ["gandalf@email.com", "tyrion@email.com"]
-
-console.log(dictionary.keyValues()); // [{key: "Gandalf", value: "gandalf@email.com"}, {key: "Tyrion", value: "tyrion@email.com"}]
-console.log(dictionary.toString()); // [#Gandalf: gandalf@email.com],[#Tyrion: tyrion@email.com]
-
-dictionary.forEach((k, v) => {
-  console.log('forEach: ', `key: ${k}, value: ${v}`);
-});
-// forEach:  key: Gandalf, value: gandalf@email.com
-// forEach:  key: Tyrion, value: tyrion@email.com
+const initializeColor = vertices => {
+  const color = {}
+  for (let i = 0; i < vertices.length; i++) {
+    color[vertices[i]] = Colors.WHITE
+  }
+  return color
+}
