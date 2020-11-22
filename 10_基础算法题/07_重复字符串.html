@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function repeatStringNumTimes(str, num) {
+      // 1. 定义一个空字符串来用返回
+      let ask = ''
+      // 2. if 判断num 的值
+      if (num) {
+        // 3. 循环加值给 ask ,循环的次数为num
+        for (let i = 0; i < num; i++) {
+          // 4. 每循环一次 就进行一次字符串拼串操作
+          ask += str
+        }
+        return ask
+      } else {
+        return false
+      }
+    }
+    repeatStringNumTimes("abc", 3);
+    // console.log(repeatStringNumTimes("abc", 3))
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function titleCase(str) {
+      // 1. 将字符串转换为 数组
+      let strarr = str.split(' ')
+      let len
+      let lit
+      let newstr = ''
+      // 2. 将数组中每个元素的字符串的第一位转换为大写 其余为小写
+      for (let i = 0; i < strarr.length; i++) {
+        // 3.获得字符串第一个字符 
+        len = strarr[i].substr(0, 1)
+        // 4.获得字符串第一个之后的字符 
+        lit = strarr[i].substring(1)
+        // 5. 循环拼串，
+        newstr += len.toUpperCase() + lit.toLowerCase() + ' '
+      }
+      // 6. 
+      console.log(newstr)
+      // 7. 返回新的字符串，将末尾的空格去掉
+      return newstr.replace(/\s* $/g, '')
+    }
+
+    titleCase("I'm a little tea pot")
+    titleCase("sHoRt AnD sToUt")
+    titleCase("HERE IS MY HANDLE HERE IS MY SPOUT")
+    // console.log(titleCase("I'm a little tea pot"))
+  </script>
+</body>
+
+</html>

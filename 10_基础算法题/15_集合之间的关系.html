@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function mutation(arr) {
+      // String 的 indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+      // 注释：indexOf() 方法对大小写敏感！
+      // 注释：如果要检索的字符串值没有出现，则该方法返回 -1。
+
+
+      // 1. 将字符串统一转换为 小写 或者 大写 均可
+      let a = arr[0].toLowerCase()
+      let b = arr[1].toLowerCase()
+      // 2. 循环遍历b ,用a.indexOf() 来检查b中是否有a里的
+      for (let i = 0; i < b.length; i++) {
+        console.log(b[i])
+        // 3. 这里只判断出现 小于 0 的情况 也就是只要一个字母不包含就 fasle
+        if (a.indexOf(b[i]) < 0) {
+          return false
+        }
+      }
+      // 4. 如果没有不包含的，自然为ture了
+      return true
+    }
+    console.log(mutation(["Mary", "Army"]))
+
+
+    function mutation2(arr) {
+      let a = arr[0].toLowerCase()
+
+      let b = arr[1].toLowerCase()
+
+      return b.split("").every(val => {
+        return a.split("").indexOf(val) != -1
+      })
+    }
+
+    mutation2(["hello", "hey"]);
+  </script>
+</body>
+
+</html>

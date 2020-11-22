@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // substring() 方法用于提取字符串中介于两个指定下标之间的字符。
+    function confirmEnding(str, target) {
+      // 1. 获取该target的长度
+      let num = target.length
+      // 2. 获取 str 末尾到 num 的长度 
+      // 已知String的最大长度+1 = str.length
+      // 从而前向倒推 第 num 个
+      /* 如果字符串不是规则的，可用 split()来获取符合规范的字符串*/
+      let con = str.substring(str.length - num, str.length)
+
+      //比较并返回
+      if (con == target) {
+        console.log('true')
+        return true
+      } else {
+        console.log('false')
+        return false
+      }
+    }
+
+    confirmEnding("Open sesame", "same")
+
+    // 方法二
+    function confirmEnding2(str, target) {
+
+      // 正则匹配
+      let re = new RegExp(target + "$", "i");
+      //  输出匹配结果 返回 true | false
+      return re.test(str);
+    }
+
+    console.log(confirmEnding2("Bastian", "n"));
+
+    // 方法三
+    function confirmEnding3(str, target) {
+      //  String 的 slice 方法，截取 start -end 位置的字符 ；比较是否相等 ，返回布尔值
+      return str.slice(str.length - target.length, str.length) === target
+    }
+
+    console.log(confirmEnding3("Bastian", "n"));
+
+    // 方法四
+    function confirmEnding4(str, target) {
+      //  String 的 slice 方法，传入负数被视为 截取 最后一个 到 倒数第n个
+      return str.slice(-str.length) === target
+    }
+
+    console.log(confirmEnding4("Bastian", "n"));
+  </script>
+</body>
+
+</html>

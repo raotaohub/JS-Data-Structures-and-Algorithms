@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 真假测试
+    function booWho(bool) {
+      // typeof 返回的是 数据类型的 字符串表达
+      let bl = typeof bool
+      console.log(bl)
+      if (bl === 'boolean') {
+        return true
+      } else {
+        return false
+      }
+    }
+    console.log(booWho(true))  //'boolean' true
+    console.log(booWho(false)) //'boolean' true
+    console.log(booWho(null))  //'object' false
+
+    //  简写
+    function booWho2(bool) {
+      // What is the new fad diet for ghost developers? The Boolean.
+
+      return typeof bool === 'boolean'
+    }
+
+    booWho2(null);
+  </script>
+</body>
+
+</html>

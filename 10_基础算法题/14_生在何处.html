@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-where-do-i-belong/16094
+    function getIndexToIns(arr, num) {
+      // 1. 将该数组 向下取整后 添加到数组中
+      arr.push(Math.floor(num))
+      // 2. 使用sort()方法，进行排序
+      arr.sort((a, b) => a - b)
+      console.log(arr)
+      // 3. 排序后 使用indexOf()检查该元素在数组中的索引
+      let newnum = arr.indexOf(num)
+      console.log(newnum)
+      return newnum;
+    }
+
+    getIndexToIns([33, 45], 25);
+
+    // 方法2 
+
+    function getIndexToIns(arr, num) {
+      // 1.先将数组内部的元素 进行从小到大有序排列
+      arr.sort(function (a, b) {
+        return a - b;
+      });
+      // 2.遍历数组
+      for (var a = 0; a < arr.length; a++) {
+        // 3.  逐个与num 比较，若数组中某个数字大于 num 则说明 num的index应该在其前
+        // 由于数组插入时候，会改变length ，因此num若插入 则代替了当前数组 
+        if (arr[a] >= num) return a;
+      }
+      // 4. 若遍历比较后 num 是最大的， 则说明它的index应该是arr数组的最大长度的那个索引值
+      return arr.length;
+    }
+
+
+  </script>
+</body>
+
+</html>

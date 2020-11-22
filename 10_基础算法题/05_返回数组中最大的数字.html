@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function largestOfFour(arr) {
+      // 1. 创建一个数组容器
+      let maxarr = []
+      // 1. 创建一个number类型的变量 用来存储变量
+      let num = 0
+      // 2. 第1层for循环遍历数组arr
+      for (let i = 0; i < arr.length; i++) {
+        // 7. 每执行完一次内层嵌套 将num值清除 并赋值到任意arr[i][index] 这里以0为索引
+        num = arr[i][0]
+        // 3. 第2层for循环遍历arr[i]里的子数组
+        for (let j = 0; j < arr[i].length; j++) {
+          // 4. 用if判断 arr[i][j]里的最大的元素 
+          if (num < arr[i][j]) {
+            // 5. 将最大的元素储存到 变量 num 中
+            num = arr[i][j]
+          }
+        }
+        // 6. 每执行完一次内层嵌套 将num添加到 容器 maxarr 中 
+        maxarr.push(num)
+      }
+      // 8. 完成内外层for循环 得到新的数组 maxarr
+      console.log(maxarr)
+      return maxarr
+    }
+    largestOfFour([
+      [17, 23, 25, 12],
+      [25, 7, 34, 48],
+      [4, -10, 18, 21],
+      [-72, -3, -17, -10]
+    ])
+
+    function largestOfFour2(arr) {
+      let newArr = []
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr[i].length - 1; j++) {
+          if (compare(arr[i][j], arr[i][j + 1])) {
+            newArr.push(arr[i][j])
+          }
+        }
+      }
+      console.log(newArr)
+      return newArr
+    }
+  </script>
+</body>
+
+</html>

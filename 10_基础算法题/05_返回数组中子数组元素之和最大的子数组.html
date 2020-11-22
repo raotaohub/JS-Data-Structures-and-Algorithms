@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function largestOfFour(arr) {
+      // 1. 初始化 容器 和 变量
+      let max = 0
+      let len = []
+      // 2. 第一层for循环 得到子数组
+      for (let i = 0; i < arr.length; i++) {
+        // 3. 第二层for循环 得到子数组的元素
+        for (let j = 0; j < arr[i].length; j++) {
+          // 4. 循环计算 子数组元素之总和
+          max += arr[i][j]
+        }
+        // 5. 得到每个子数组元素之和 13 97 240 3099 并添加到新数组中
+        len.push(max) // 已得到新数组 [13 ,97 ,240, 3099]
+      }
+      // 6. 定义一个变量 ma 初始化一个number类型值
+      let ma = len[0]
+      for (let i = 0; i < len.length; i++) {
+        // 7. 将数字最大的元素赋值给 ma  这里是一段比较大小的代码
+        if (ma < len[i]) {
+          ma = len[i]
+        }
+      }
+
+      // 8. 获得索引
+      let index = len.indexOf(ma)
+      // 该索引就是 arr 中子数组元素之和最大的那个子数组的索引
+      return arr[index]
+    }
+
+    // console.log(largestOfFour([
+    //   [13, 27, 18, 26],
+    //   [4, 5, 1, 3],
+    //   [32, 35, 37, 39],
+    //   [1000, 1001, 857, 1]
+    // ]))
+
+    // function compare(a, b) {
+    //   if (a > b) return 1
+    //   if (a == b) return 0
+    //   if (a < b) return -1
+    // }
+
+    // function largestOfFour2(arr) {
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // substr() 方法可在字符串中抽取从 start 下标开始的指定数目的字符。
+    // 方法1 
+    function truncateString(str, num) {
+      // 1. 我定义了一个变量 来接收
+      let len
+      // 2. 判断需要做出变化的情况 ，若 str长度大于 num
+      if (str.length > num) {
+        // 2.1 则用substr()把字符串 前num 提出出来，拼串一个'...'
+        len = str.substr(0, num) + '...'
+      } else {
+        // 3. 其余情况 都可以直接返回 该字符串
+        len = str
+      }
+      console.log(len)
+      return len
+    }
+    truncateString("A-tisket a-tasket A green and yellow basket",
+      "A-tisket a-tasket A green and yellow basket".length)
+
+    // 方法2 
+    function truncateString(str, num) {
+      return str.length > num ? str.slice(0, num) + "..." : str;
+    }
+  </script>
+</body>
+
+</html>

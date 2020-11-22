@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function factorialize(n) {
+      // 1. 注意定义初始值从 1 开始
+      var num = 1
+      // 2. 让num 循环 * i 值 ，让i值 <= n值时候继续循环
+      for (let i = 1; i <= n; i++) {
+        num *= i
+        // console.log(num)
+      }
+      return num
+    }
+    console.log(factorialize(6))
+
+    // 递归写法
+    function factorial(num) {
+      if (num <= 1) {
+        return 1;
+      } else {
+        return num * factorial(num - 1);
+      }
+    }
+  </script>
+</body>
+
+</html>

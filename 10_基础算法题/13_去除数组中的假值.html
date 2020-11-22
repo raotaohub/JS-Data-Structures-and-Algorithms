@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function bouncer(arr) {
+      let len
+      let newarr = []
+      for (let i = 0; i < arr.length; i++) {
+
+        // 1. 将arr中每个元素进行类型转换Boolean()
+        len = Boolean(arr[i])
+        // 2. 将len 为ture的对应的 元素 添加到newarr中
+        if (len) {
+          newarr.push(arr[i])
+        }
+      }
+      // 3. 最后返回只有 ture 值的 数组
+      console.log(newarr)
+      return newarr;
+    }
+
+    bouncer([7, "ate", "", false, 9]);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // slice() 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的
+    // 原数组的浅拷贝（包括 begin，不包括end）。原始数组不会被改变。
+    function frankenSplice(arr1, arr2, n) {
+      // 1. 拷贝arr1
+      let newarr1 = arr1.slice(0, arr1.length)
+      // 2. 拷贝arr2
+      let newarr2 = arr2.slice(0, arr2.length)
+      // 3. 插入新数组 使用展开运算符展开复制的 newarr1 
+      newarr2.splice(n, 0, ...newarr1) // 若splice 输入第3个参数，表示替换，若第2个参数为0 等同插入
+      console.log(newarr2)
+      return newarr2
+    }
+
+    // frankenSplice([1, 2, 3], [4, 5, 6], 1);
+    // splice() 方法会改变原数组 ！
+    // splice(0,0,'元素') 在数组开头添加一个元素
+    // splice(array.length,0,'元素') 在数组末尾添加一个元素
+    // splice(0,1）删除数组第一个元素
+    // splice(array.length-1,1,）删除数组最后一个元素
+
+    let fccarr = [1, 2, 3, 4, 5, 6]
+    console.log(fccarr) //                    Array(6) [ 1, 2, 3, 4, 5, 6 ]
+
+    fccarr.splice(0, 0, '元素') //              Array(7) [ "元素", 1, 2, 3, 4, 5, 6 ] 
+    fccarr.splice(fccarr.length, 0, '元素') //  Array(8) [ "元素", 1, 2, 3, 4, 5, 6, "元素" ]
+    fccarr.splice(0, 1) //                     Array(7) [ 1, 2, 3, 4, 5, 6, "元素" ]
+    fccarr.splice(fccarr.length - 1, 1) //       Array(6) [ 1, 2, 3, 4, 5, 6 ]
+
+    console.log(fccarr)
+  </script>
+</body>
+
+</html>

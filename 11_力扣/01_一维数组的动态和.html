@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var runningSum = function (nums) {
+    //   const  length = nums.length
+    //   let array = new Array(length)
+
+    //   for (let i = 0; i < length; i++) {
+    //     let current;
+    //     if (i === 0) {
+    //       current = nums[i] + 0
+    //     } else {
+    //       current = array[i-1] + nums[i]
+    //     }
+    //     array[i] = current
+    //   }
+    //   return array
+    // };
+    
+    // var runningSum = function (nums) {
+    //   for (let i = 1; i < nums.length; ++i) {
+    //     nums[i] += nums[i - 1];
+    //   }
+    //   return nums;
+    // }
+    var runningSum = function (nums) {
+
+      const length = nums.length
+      let array = []
+      for (let i = 0; i < length; i++) {
+        let current;
+        if (i === 0) {
+          current = nums[i] + 0
+        } else {
+          current = array[i - 1] + nums[i]
+        }
+        array.push(current)
+      }
+      return array
+    };
+    let nums = [1, 2, 3, 4]
+    console.log(runningSum(nums))
+  </script>
+
+</body>
+
+</html>
