@@ -10,7 +10,7 @@ class Node {
 /*  
   push(element):            向链表尾部添加一个新元素
   insert(element,position): 向链表特定位置插入一个新元素
-  getElementAt(index):     返回链表中特定位置的元素，若不存在返回undefined
+  getElementAt(index):      返回链表中特定位置的元素，若不存在返回undefined
   remove(element):          从链表中移除一个元素
   indexOf(element):         返回元素在链表中的索引，若无返回-1
   removeAt(position):       从链表的特定位置移除一个元素
