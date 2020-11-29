@@ -32,36 +32,19 @@ class BSTTree {
       this.insertNode(this.root, key)
     }
   }
-  // insertNode(node, key) {
-  //   // 判断大小 看是要插入左侧还是右侧
-  //   if (this.compare(key, node.key) == -1) {
 
-  //     if (node.left == null) {
-  //       node.left = new Node(key)
-  //     } else {
-  //       this.insertNode(node.left, key)
-  //     }
-  //   } else {
-
-  //     if (node.right == null) {
-  //       node.right = new Node(key)
-  //     } else {
-  //       this.insertNode(node.right, key)
-  //     }
-  //   }
-  // }
   insertNode(node, key) {
     // 判断大小 看是要插入左侧还是右侧
     if (this.compare(node.key, key) == Compare.LESS_THAN) {
 
-      if (node.right == null) {
+      if (node.right === null) {
         node.right = new Node(key)
       } else {
         this.insertNode(node.right, key)
       }
     } else {
 
-      if (node.left == null) {
+      if (node.left === null) {
         node.left = new Node(key)
       } else {
         this.insertNode(node.left, key)
@@ -69,6 +52,22 @@ class BSTTree {
     }
   }
   // search()               在树中查找一个键，以布尔值返回
+  search(key) {
+    return this.searchNode(this.root, key)
+  }
+  searchNode(node, key) {
+    if (node == null) {
+      return false
+    }
+    if (this.compare(node.key, key) == Compare.LESS_THAN) {
+      return this.searchNode(node.right, key)
+    } else if (this.compare(node.key, key) == Compare.BIGGER_THAN) {
+      return this.searchNode(node.left, key)
+    }
+    else {
+      return true
+    }
+  }
   // preOrderTraverse()     通过先序 遍历方式 遍历所有的节点
   preOrderTraverse(callback) {
     this.preOrderTraverseNode(this.root, callback)
@@ -81,11 +80,88 @@ class BSTTree {
     }
   }
   // inOrderTraverse()      通过中序 遍历方式 遍历所有的节点
+  inOrderTraverse(callback) {
+    this.inOrderTraverseNode(this.root, callback)
+  }
+  inOrderTraverseNode(node, callback) {
+    if (node != null) {
+      this.inOrderTraverseNode(node.left, callback)
+      callback(node)
+      this.inOrderTraverseNode(node.right, callback)
+    }
+  }
   // postOrderTraverse()    通过后续 遍历方式 遍历所有的节点
+  postOrderTraverse(callback) {
+    this.postOrderTraverseNode(this.root, callback)
+  }
+  postOrderTraverseNode(node, callback) {
+    if (node != null) {
+      this.postOrderTraverseNode(node.left, callback)
+      this.postOrderTraverseNode(node.right, callback)
+      callback(node)
+    }
+  }
   // min()                  返回树中 最小的 键/值
+  min() {
+    if (this.root != null) {
+      return this.minNode(this.root)
+    }
+    return undefined
+  }
+  minNode(node) {
+    let current = node.left
+    while (current != null && current.left != null) {
+      current = current.left
+    }
+    return current
+  }
   // max()                  返回树中 最大的 键/值
-  // remove()               移除某个键
-
+  max() {
+    if (this.root != null) {
+      return this.maxNode(this.root)
+    }
+    return undefined
+  }
+  maxNode(node) {
+    let current = node.right
+    while (current != null && current.right != null) {
+      current = current.right
+    }
+    return current
+  }
+  // remove()               移除某个键  我失败了！！！！！！！！！
+  remove(key) {
+    this.root = this.removeNode(this.root, key)
+  }
+  removeNode(node, key) {
+    if (this.root == null) {
+      return null
+    }
+    if (this.compare(key, node.key) === Compare.LESS_THAN) {
+      node.left = this.removeNode(node.left, key)
+      return node
+    }
+    else if (this.compare(key, node.key) === Compare.BIGGER_THAN) {
+      node.right = this.removeNode(node.right, key)
+      return node
+    } else {
+      if (node.right == null && node.left == null) {
+        node = null
+        return node
+      }
+      if (node.right == null) {
+        node = node.left
+        return node
+      } else if (node.left == null) {
+        node = node.right
+        return node
+      }
+      const aux = this.minNode(node.right)
+      node.key = aux.key
+      node.right = this.removeNode(node.right, aux.key)
+      return node
+    }
+  }
 }
 
 const tree = new BSTTree()
@@ -103,5 +179,32 @@ tree.insert(14)
 tree.insert(20)
 tree.insert(18)
 tree.insert(25)
+tree.insert(6)
 
 console.log(tree)
+
+let index = []
+tree.inOrderTraverse((node) => {
+  index.push(node.key)
+  // console.log(node)
+})
+let pre = []
+tree.preOrderTraverse((node) => {
+  pre.push(node.key)
+  // console.log(node)
+})
+let post = []
+tree.postOrderTraverse((node) => {
+  post.push(node.key)
+  // console.log(node)
+})
+console.log(index)
+console.log(pre)
+console.log(post)
+
+console.log(tree.search(10))
+
+// console.log(tree.remove(15))
+
+tree.remove(5)
+tree.remove(15)
