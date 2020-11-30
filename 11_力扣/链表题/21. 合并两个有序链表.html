@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    /**
+    * Definition for singly-linked list.
+    * function ListNode(val, next) {
+    *     this.val = (val===undefined ? 0 : val)
+    *     this.next = (next===undefined ? null : next)
+    * }
+    */
+    /**
+    * @param {ListNode} l1
+    * @param {ListNode} l2
+    * @return {ListNode}
+    */
+   -->
+  <!--  
+    21. 合并两个有序链表
+    将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+    示例：
+
+    输入：1->2->4, 1->3->4
+    输出：1->1->2->3->4->4
+
+    如何保证升序？
+      比较L1和L2 当前节点的值
+    如何拼接？
+      将当前的节点的下一个指向值较小的节点，然后迭代该节点指针
+    如何确认边界？
+      引入哑节点
+
+      1、首先创建一个 哨兵节点 prehead ，
+      2、用一个per 引用哨兵节点 并迭代它
+      
+   -->
+  <script>
+    var mergeTwoLists = function (l1, l2) {
+      const prehead = new ListNode(-1);
+      let per = prehead
+      while (l1 != null && l2 != null) {  // 【1】 L1 L2 都不为null
+        if (l1.val <= l2.val) {           // 【2】比较l1和l2值的大小
+          per.next = l1.val               // 【3.1】若l1小于或等于l2 那么将per的next指针指向l1;然后迭代 l1
+          l1 = l1.next
+        } else {
+          per.next = l2.val               //  下次循环的时;l2的指针依旧指着第1个值，l1的指针指向它的第2个值，再进行一次比较
+          l2 = l2.next
+        }
+        per = per.next                    // 【4】循环一次while 则迭代一次
+      }
+      pre.next = l1 === null ? l2 : l1    // 【5】若l1或者l2有一个为null则会退出循环，直接将per的next指向不为null的链表
+      return prehead.next
+    };
+  </script>
+
+</body>
+
+</html>

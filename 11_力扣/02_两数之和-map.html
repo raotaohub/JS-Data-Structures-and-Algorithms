@@ -9,7 +9,7 @@
 
 <body>
   <script>
-    /* 利用 map 来搜寻*/
+    /* 利用 map 来搜寻，map可以保证存储的值不重复*/
     var twoSum = function (nums, target) {
       let map = new Map()
       for (let i = 0; i < nums.length; i++) {
@@ -17,12 +17,11 @@
       }
       for (let i = 0; i < nums.length; i++) {
         let diff = target - nums[i]
-        if (map.has(diff)) {
+        if (map.has(diff) && map.get(diff) != i) {     // 这里不仅要保证有该数，而且不能与 i 下标相等
           return [i, map.get(diff)]
         }
       }
     };
-
 
     let result = twoSum([2, 7, 11, 15], 9)
 

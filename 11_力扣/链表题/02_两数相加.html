@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+ * Definition for singly-linked list.
+
+ */
+    function ListNode(val, next) {
+      this.val = (val === undefined ? 0 : val)
+      this.next = (next === undefined ? null : next)
+    }
+    /**
+     * @param {ListNode} l1
+     * @param {ListNode} l2
+     * @return {ListNode}
+     */
+    // 首先取出“+”左右两边两个数的最低位，也就是
+    // let val1 = l1.val
+    // let val2 = l2.val
+    // 将它们的和作为结果输出到一个新链表中
+    // let sum = new ListNode('0')
+    // sum.next = new ListNode((val1 + val2) % 10)
+
+    {
+      let sum = new ListNode('0') // 创建一个头链表
+      let head = sum              // 保存头链表
+      while (l1 || l2) {
+        let val1 = l1.val
+        let val2 = l2.val
+        let r1 = val1 + val2      //求和
+        sum.next = new ListNode(ri % 10)  // 将结果放入链表， % 10 是因为如果相加大于10 则要取余
+        sum = sum.next            // 将表指向下一个节点
+        if (l1) { l1 = l1.next }  //l1指向下一个节点，以便计算第二个节点的值
+        if (l2) { l2 = l2.next }  //l2指向下一个节点，以便计算第二个节点的值
+      }
+      return head.next
+    }
+    // 考虑进位的问题
+    {
+      let addOne = 0
+      let sum = new ListNode('0')       // 创建一个头链表
+      let head = sum                    // 保存头链表
+      while (addOne || l1 || l2) {      // 在进位或两个链表存在一个的情况进行以下操作
+        let val1 = l1.val
+        let val2 = l2.val
+        let r1 = val1 + val2 + addOne     // 求和
+        addOne = ri >= 10 ? 1 : 0         // 如果求和结果>=10，那么进位为1，否则为0
+        sum.next = new ListNode(ri % 10)  // 将结果放入链表， % 10 是因为如果相加大于10 则要取余
+        sum = sum.next                    // 将表指向下一个节点
+        if (l1) { l1 = l1.next }          // l1指向下一个节点，以便计算第二个节点的值
+        if (l2) { l2 = l2.next }          // l2指向下一个节点，以便计算第二个节点的值
+      }
+      return head.next
+    }
+    // 考虑 链表 不同的情况 如[9999]与[99]相加时，l2第三个指针为null 相加为 NaN;因此若指针不存在令它为 0 。
+    var addTwoNumbers = function (l1, l2) {
+      let addOne = 0
+      let sum = new ListNode('0')       // 创建一个头链表
+      let head = sum                    // 保存头链表
+      while (addOne || l1 || l2) {      // 在进位或两个链表存在一个的情况进行以下操作
+        let val1 = l1 !== null ? l1.val : 0 //
+        let val2 = l2 !== null ? l2.val : 0
+        let r1 = val1 + val2 + addOne     // 求和
+        addOne = ri >= 10 ? 1 : 0         // 如果求和结果>=10，那么进位为1，否则为0
+        sum.next = new ListNode(ri % 10)  // 将结果放入链表， % 10 是因为如果相加大于10 则要取余
+        sum = sum.next                    // 将表指向下一个节点
+        if (l1) { l1 = l1.next }          // l1指向下一个节点，以便计算第二个节点的值
+        if (l2) { l2 = l2.next }          // l2指向下一个节点，以便计算第二个节点的值
+      }
+      return head.next
+    }
+
+  </script>
+
+</body>
+
+</html>

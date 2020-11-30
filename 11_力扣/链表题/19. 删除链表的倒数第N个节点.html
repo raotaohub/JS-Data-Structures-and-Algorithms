@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  /**
+* Definition for singly-linked list.
+* function ListNode(val, next) {
+* this.val = (val===undefined ? 0 : val)
+* this.next = (next===undefined ? null : next)
+* }
+*/
+  /**
+  * @param {ListNode} head
+  * @param {number} n
+  * @return {ListNode}
+  */
+</script>
+
+<body>
+  <!-- 
+    19. 删除链表的倒数第N个节点
+        给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+    
+        示例：
+
+        给定一个链表: 1->2->3->4->5, 和 n = 2.
+        当删除了倒数第二个节点后，链表变为 1->2->3->5.
+
+        首先思考如何删除链表中一个节点？
+        
+        其次如何找到倒数第 n 个？
+
+        利用快慢指针法 
+          1、 需要两个 head 的引用：一个为快，一个为慢
+          2、 让 快指针先走 n 次
+          3、 让 快指针和 慢指针 一起走，走到快指针的下一次 null
+   -->
+
+  <script>
+
+    var removeNthFromEnd = function (head, n) {
+      let quick = head
+      let slow = head
+      /** 快指针先走n步 慢指针原地不动 这样二者就拉开n的距离 */
+      while (n > 0) {
+        quick = quick.next
+        n--
+      }
+      /**
+       * 如果此时fast已经走到了null
+       * 说明该链表的长度即为 n 那么当前head就是要删除的节点
+      */
+      if (!quick) {
+        return head.next;
+      }
+      /** 快慢指针一起动，直到快指针走到最后一个节点（此时fast.next === null）此步骤最重要！*/
+      while (quick.next) {
+        quick = quick.next
+        slow = slow.next
+      }
+      /**
+       * 快指针和慢指针相差n 假设是2的情况下
+       * 慢 -> * -> 快 -> null
+       * 此时慢指针即为要删除元素的前驱节点，下面的代码就顺理成章了
+       */
+      slow.next = slow.next.next
+      return head
+    };
+  </script>
+</body>
+
+</html>

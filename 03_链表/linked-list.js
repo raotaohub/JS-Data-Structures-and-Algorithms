@@ -142,5 +142,9 @@ class LinkedList {
 const list = new LinkedList()
 list.push(15)
 list.push(10)
+list.push(12)
+list.push(11)
+list.push(8)
 console.log(list)
 console.log('111')
+
