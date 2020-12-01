@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function recursion(num) {
+      if (num === 1) return 1
+      return num = num * recursion(num - 1)
+    }
+    function feibonaqie(num) {
+      if (num == 1 || num == 2) return 1
+      return feibonaqie(num - 1) + feibonaqie(num - 2)
+    }
+  </script>
+</body>
+
+</html>

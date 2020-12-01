@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    思路:
+      迭代链表，把链表节点的值都存入数组中，然后迭代数组，看第1个和倒数第1个是否相等，第2个和倒数第2个是否相等···
+      数组方法要注意的点：
+            数组最后一个元素的下标是 length -1
+            两头同时迭代的终止条件 是i<j
+   -->
+  <script>
+    var isPalindrome = function (head) {
+      let arr = []
+      while (head !== null) {
+        arr.push(head.val)
+        head = head.next
+      };
+      const len = arr.length
+      for (let i = 0, j = len - 1; i < j; --j, ++i) { // 这里要注意 ，终止条件是 i < j ; 
+        if (arr[i] != arr[j]) {
+          return false
+        }
+      }
+      return true
+    };
+  </script>
+</body>
+
+</html>

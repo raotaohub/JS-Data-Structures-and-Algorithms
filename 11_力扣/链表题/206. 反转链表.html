@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 反转一个单链表。
+
+示例:
+
+输入: 1->2->3->4->5->NULL
+输出: 5->4->3->2->1->NULL 
+
+思路：
+  dummy->2->1->3->4->5
+  dummy->3->2->1->4->5
+  dummy->4>-3->2->1->5
+  dummy->5->4->3->2->1
+  
+  翻转的 目标是 将当前节点的 next 指针改为指向前一个元素，直到当前节点为null
+  
+-->
+
+<body>
+  <script>
+    var reverseList = function (head) {
+      let cur = head
+      let per = null
+
+      while (cur != null) {             // cur 是当前节点。
+
+        let nextTemp = cur.next         // 这是当前节点的下一个
+
+        cur.next = per                  // 当前节点的下一个 指向前一个 
+        /*以上处理反转，以下处理保存指针*/
+        per = cur                       // 成为下一轮循环时当前节点的前一个
+
+        cur = nextTemp                  // 成为下一轮循环时当前节点(这里用temp提前保存了)
+
+      }
+      return per
+    }
+  </script>
+
+</body>
+
+</html>
