@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 142. 环形链表 II
+    给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+      方式一 哈希表
+      1、创建一个哈希表
+      2、开始一个 while 循环
+          首先判断map中是否有当前的 node
+          若无，则将当前 node 加入到哈希表中
+          然后迭代 node 
+      3、 若链表是无环的，说明它会到 null 当退出循环的时候，就返回 null
+   -->
+  <script>
+    var detectCycle = function (head) {
+      let map = new Map()
+      while (head) {
+        if (map.has(head)) {
+          return map.get(head)
+        }
+        map.set(head)
+        // map.set(head,head) 貌似 不需要将键值都存入 
+        head = head.next
+      }
+      return null
+    }
+  </script>
+
+</body>
+
+</html>

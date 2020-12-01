@@ -35,7 +35,31 @@
       return false
 
     }
+    /*    快慢指针一    */
+    var hasCycle = (head) => {
+      if (head == null || head.next == null) { return false }
+      let quick = head.next
+      let slow = head
+      while (quick != slow) {
+        if (quick == null || quick.next == null) { return false }
+        slow = slow.next
+        quick = quick.next.next
+      }
+      return true
 
+    }
+    /*    快慢指针二    */
+    var hasCycle = (head) => {
+      let quick = slow = head
+      while (quick && quick.next) {     // 第一次进入循环判断的是 head !=null head.next != null 否则就是无环
+        slow = slow.next                // 如果过了这个筛选 则可以进行 迭代
+        quick = quick.next.next
+        if (quick == slow) {
+          return true
+        }
+      }
+      return false
+    }
   </script>
 
 </body>
