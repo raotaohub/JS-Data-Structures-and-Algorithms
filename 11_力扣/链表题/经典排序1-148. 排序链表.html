@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+  /**
+    * Definition for singly-linked list.
+    * function ListNode(val, next) {
+    *     this.val = (val===undefined ? 0 : val)
+    *     this.next = (next===undefined ? null : next)
+    * }
+    */
+
+  /**
+    * @param {ListNode} head
+    * @return {ListNode}
+    */ 
+-->
+  <!-- 148. 排序链表
+        给你链表的头结点 head ，请将其按 升序 排列并返回 排序后的链表 。
+
+        方式一：暴力法则 
+                1、将链表的值输出到一个 数组 中
+                2、利用数组的 sort 排序
+                3、创建新的链表
+                4、遍历数组，返回新的链表
+
+        方式二：归并递归
+
+          看到时间复杂度的要求，而且是链表，归并排序比较好做。
+          都知道归并排序要先归（二分），再并。两个有序的链表是才比较容易合并的。
+          二分到不能再二分，即递归压栈到了底部，链只有一个结点，本身就是有序的，于是在递归出栈时进行合并。
+
+          合并两个有序的链表，合并后的结果返回给父调用，一层层向上，最后得出大问题的答案。
+
+          // 伪代码
+          func sortList (head) {
+            对链表进行二分
+            l = sortList(左链) // 已排序的左链
+            r = sortList(右链) // 已排序的右链
+            merged = mergeList(l, r) // 进行合并
+            return merged		// 返回合并的结果给父调用
+          }
+
+  -->
+  <script>
+    var sortList = function (head) {
+      // if (!head || !head.next) return head
+      if (head == null || head.next == null) return head
+
+      let fast = head, slow = head
+
+      let mid = null
+      while (fast && fast.next) {
+        mid = slow
+        slow = slow.next
+        fast = fast.next.next
+      }
+
+      mid.next = null
+
+      let left = sortList(head)
+      let right = sortList(slow)
+
+      return merge(left, right)
+    }
+    var merge = function (l1, l2) {
+      let list = new ListNode('head')
+      let per = list
+      while (l1 && l2) {
+        if (l1.val < l2.val) {
+          per.next = l1
+          l1 = l1.next
+        } else {
+          per.next = l2
+          l2 = l2.next
+        }
+        per = per.next
+      }
+      if (l1) per.next = l1
+      if (l2) per.next = l2
+      return list.next
+    }
+  </script>
+</body>
+
+</html>
