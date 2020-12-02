@@ -42,7 +42,7 @@
       const newArr = []
       for (let i = 0; i < length; i += 2) {         // 若数组中不只 1 个,每次迭代2个下标取出他们，调用merge方法
         newArr.push(                                // 把2个合并成一个，然后添加到新数组中
-          merge(lists[i] || null, lists[i + 1] || null))  // 调用merge,它回将两个链表排序合并成一个,然后push进数组里
+          merge(lists[i], lists[i + 1]))  // 调用merge,它回将两个链表排序合并成一个,然后push进数组里
       }
       return mergeKLists(newArr)                     // 最后穿入新数组，然后调用自己
     }
