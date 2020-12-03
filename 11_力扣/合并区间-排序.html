@@ -54,6 +54,23 @@
 
       return result
     }
+
+    // 还有更秒的
+
+    var merge = function (intervals) {
+      if (!intervals || !intervals.length) return [];   // 排除边界条件
+      intervals.sort((a, b) => a[0] - b[0]);            // 按元素下标 0 的值进行升序排列
+      let ans = [intervals[0]];                         // 先把第一个元素 放入新数组中
+      for (let i = 1; i < intervals.length; i++) {      // 循环查找 是否存在 a >= b 的情况
+        if (ans[ans.length - 1][1] >= intervals[i][0]) {
+          ans[ans.length - 1][1] = Math.max(ans[ans.length - 1][1], intervals[i][1])  // 存在则进行修改操作，扩大a[1]的值
+        } else {
+          ans.push(intervals[i])  // 不存在 则直接添加到新数组中
+        }
+      }
+      return ans
+    };
+
   </script>
 
 </body>
