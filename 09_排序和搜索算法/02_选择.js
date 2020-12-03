@@ -24,18 +24,14 @@ function selectionSort(arr, fn = compare) {
   let indexMin
 
   for (let i = 0; i < length - 1; i++) {
-    // 每轮最小的值的下标
-    indexMin = i
-    //  j 从 第 i 次开始迭代,从而跳过了上轮的下标
-    for (let j = i; j < length; j++) {
-      // 若有 arr[j] 比 arr[indexMin] 小，那么将j 赋值给 indexMin
-      if (arr[indexMin] > arr[j]) {
+    indexMin = i                                  // 倒数第 i 大的下标
+    for (let j = i; j < length; j++) {            // j 从 第 i 次开始迭代,从而再下次循环跳过了上轮的下标
+      if (arr[indexMin] > arr[j]) {               // 迭代整个数组若有 arr[j] 小于 arr[indexMin] ,那么将 j 赋值给 indexMin
         indexMin = j
       }
     }
-    if (i !== indexMin) {   // 若i 和 indexMin 不相等 则进行交换
-      // swap(arr, i, indexMin)
-      [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]]
+    if (i !== indexMin) {                              // 若i 和 indexMin 不相等 则进行交换
+      [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]] // swap(arr, i, indexMin) 这步交换 可以优化性能
     }
   }
   return arr
