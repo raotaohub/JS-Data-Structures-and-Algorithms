@@ -45,7 +45,7 @@
     var mergeTwoLists = function (l1, l2) {
       const prehead = new ListNode(-1);
       let per = prehead
-      while (l1 != null && l2 != null) {  // 【1】 L1 L2 都不为null
+      while (l1 != null && l2 != null) {  // 【1】L1 L2 都不为null
         if (l1.val <= l2.val) {           // 【2】比较l1和l2值的大小
           per.next = l1.val               // 【3.1】若l1小于或等于l2 那么将per的next指针指向l1;然后迭代 l1
           l1 = l1.next

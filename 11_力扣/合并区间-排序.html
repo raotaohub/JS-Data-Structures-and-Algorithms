@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 56. 合并区间
+
+      什么情况下 需要合并呢？ [1,4] [2,5],   
+                               |   |
+                               a   b
+      只要出现 a>=b 的情况 就存在交集，就符合合并的要求
+      思路：
+        1、先把原始数组，按第 0 个 下标进行升序排序:[ [3,7],[2,5],[0,1] ]==>[ [0,1],[2,5],[3,7] ]
+        2、循环遍历原始数组，查找是否存在当前元素下标 1 的值 大于等于 后一个元素下标 0 的值 
+            2.1 声明两个变量在储存 左 右的值
+            2.2 若存在 a>=b 的情况 就进入一个循环，再次查找
+        3、把合并后的值添加到 新数组中 ，如果没有满足条件第二步的条件 则将当前遍历的元素直接添加到新数组中
+  
+ -->
+
+<body>
+  <script>
+    let arr = [[2, 4], [0, 8], [9, 15], [5, 7], [1, 5]]
+    var sort = function (arr) {
+      console.log('start');
+      console.log(arr.sort((a, b) => a[0] - b[0]))
+
+    }
+
+
+    sort(arr)
+    var merge = function (intervals) {
+      const { length } = intervals
+      if (length < 2) return intervals
+
+      intervals.sort((a, b) => a[0] - b[0])
+      let result = []
+
+      for (let i = 0; i < length; i++) {
+        let left = intervals[i][0]
+        let right = intervals[i][1]
+        let j = i
+        while (j < length - 1 && right >= intervals[j + 1][0]) {
+          right = Math.max(right, intervals[j + 1][1])
+          i++
+          j++
+          // console.log(i, j)
+        }
+        result.push([left, right])
+      }
+
+      return result
+    }
+  </script>
+
+</body>
+
+</html>

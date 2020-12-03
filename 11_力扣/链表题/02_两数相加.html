@@ -61,9 +61,9 @@
     }
     // 考虑 链表 不同的情况 如[9999]与[99]相加时，l2第三个指针为null 相加为 NaN;因此若指针不存在令它为 0 。
     var addTwoNumbers = function (l1, l2) {
-      let addOne = 0                    // 第一次的进位结果 为 0
       let sum = new ListNode('0')       // 创建一个头链表
       let head = sum                    // 保存头链表
+      let addOne = 0                    // 第一次的进位结果 为 0
       while (addOne || l1 || l2) {      // 在进位或两个链表存在一个的情况进行以下操作
         let val1 = l1 !== null ? l1.val : 0 //
         let val2 = l2 !== null ? l2.val : 0

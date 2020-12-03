@@ -24,31 +24,57 @@
     // 哈希表
     var detectCycle = function (head) {
       let map = new Map()
+
       while (head) {
         if (map.has(head)) {
           return map.get(head)
         }
+
         map.set(head)
-        // map.set(head) 貌似 不需要将键值都存入 
+
         head = head.next
       }
       return null
     }
 
-    // 快慢指针法
-    var hasCycle = function (head) {
+    // 快慢指针法 1
+    var detectCycle = function (head) {
 
-      let quick = head
-      let slow = head
+      let quick = slow = head
 
       while (quick && quick.next) { // 因为快指针走2步，所以如果发现链表为null 则说明无环
-        quick = quick.next.next     // 走2步
-        slow = slow.next            // 走1步
-        if (quick == slow) {
-          return true
+        quick = quick.next.next
+        slow = slow.next
+        if (quick == slow) {        // 首先判断有没有环，如果有环的话进入第二个判断
+          let slow = head           // 让一个指针指向head 
+          while (slow != quick) {   // 然后同步迭代 当相同的时候 则他们处于入环的节点
+            slow = slow.next
+            quick = quick.next
+          }
+          return slow
         }
       }
       return false
+    }
+    // 快慢指针法 2
+    var detectCycle = function (head) {
+      let quick = slow = head
+
+      while (quick && quick.next) {
+        quick = quick.next.next
+        slow = slow.next
+
+        if (quick == slow) {
+          let temp = head
+          while (temp != slow) {
+            temp = temp.next
+            slow = slow.next
+          }
+          return temp
+        }
+
+      }
+      return null
     }
   </script>
 

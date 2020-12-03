@@ -20,13 +20,16 @@
         5、若有环，在循环过程中一定会遇到，若没有环，则while一定会退出，然后返回 false
 
       方法二：快慢指针
+        思路：如果链表有环，快指指针走2步，慢指针走一部，那么快指针走第二次的时候一定会追到慢指针
    -->
   <script>
     var hasCycle = (head) => {
       let map = new Map()
 
       while (head) {
-        if (map.has(head)) { return true }
+        if (map.has(head)) {
+          return true
+        }
 
         map.set(head)
 
