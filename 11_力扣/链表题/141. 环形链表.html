@@ -49,11 +49,15 @@
 
     }
     /*    快慢指针二    */
-    var hasCycle = (head) => {
-      let quick = slow = head
-      while (quick && quick.next) {     // 第一次进入循环判断的是 head !=null head.next != null 否则就是无环
-        slow = slow.next                // 如果过了这个筛选 则可以进行 迭代
-        quick = quick.next.next
+    // 快慢指针法
+    var hasCycle = function (head) {
+
+      let quick = head
+      let slow = head
+
+      while (quick && quick.next) { // 因为快指针走2步，所以如果发现链表为null 则说明无环
+        quick = quick.next.next     // 走2步
+        slow = slow.next            // 走1步
         if (quick == slow) {
           return true
         }

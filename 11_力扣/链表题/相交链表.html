@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    方式一 hash表 哈希表法
+    方式二 暴力法
+   -->
+  <script>
+    var getIntersectionNode = function (headA, headB) {
+      if (headA === null || headB === null) return null
+
+      let hash = new Map()
+      let pa = headA
+      let pb = headB
+      while (pa) {
+        hash.set(pa)
+        pa = pa.next
+      }
+
+      while (pb) {
+        if (hash.has(pb)) return pb
+        pb = pb.next
+      }
+
+    };
+
+
+    var getIntersectionNode = function (headA, headB) {
+      if (headA === null || headB === null) return null
+
+      let pa = headA
+      while (pa) {
+        let pb = headB  // 要写到这里！
+        while (pb) {
+          if (pa == pb) return pb
+          pb = pb.next
+        }
+        pa = pa.next
+      }
+
+    };
+    // https://leetcode-cn.com/problems/intersection-of-two-linked-lists/solution/160xiang-jiao-lian-biao-shuang-zhi-zhen-ha-xi-biao/
+
+    var getIntersectionNode = function (headA, headB) {
+      if (headA === null || headB === null) return null
+
+      // 到这一步说明 两个链表都不为空
+      let pa = headA
+      let pb = headB
+      // 第一次必进入循环
+      while (pa || pb) {
+        if (pa == pb) {   // 判断是否相等
+          return pa       // 相等返回
+        }
+        // 若不相等 两个链表进行迭代,
+        // 两个链表若长度不一样,有一个链表会先走到null,让它从另一个链表的头部重新开始迭代
+        // 两个链表长度若一样,  有交点的情况下一定会得到 pa == pb  若没有则会双双退出循环 得到null
+        pa = pa == null ? pb : pa.next
+        pb = pb == null ? pa : pb.next
+
+      }
+      return null
+
+    };
+  </script>
+</body>
+
+</html>

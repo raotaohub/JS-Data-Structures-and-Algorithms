@@ -17,8 +17,11 @@
           若无，则将当前 node 加入到哈希表中
           然后迭代 node 
       3、 若链表是无环的，说明它会到 null 当退出循环的时候，就返回 null
+
+      方式二 快慢指针
    -->
   <script>
+    // 哈希表
     var detectCycle = function (head) {
       let map = new Map()
       while (head) {
@@ -26,10 +29,26 @@
           return map.get(head)
         }
         map.set(head)
-        // map.set(head,head) 貌似 不需要将键值都存入 
+        // map.set(head) 貌似 不需要将键值都存入 
         head = head.next
       }
       return null
+    }
+
+    // 快慢指针法
+    var hasCycle = function (head) {
+
+      let quick = head
+      let slow = head
+
+      while (quick && quick.next) { // 因为快指针走2步，所以如果发现链表为null 则说明无环
+        quick = quick.next.next     // 走2步
+        slow = slow.next            // 走1步
+        if (quick == slow) {
+          return true
+        }
+      }
+      return false
     }
   </script>
 

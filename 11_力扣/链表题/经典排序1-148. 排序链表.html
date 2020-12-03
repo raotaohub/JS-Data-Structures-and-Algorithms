@@ -51,8 +51,8 @@
   -->
   <script>
     var sortList = function (head) {
-      // if (!head || !head.next) return head
-      if (head == null || head.next == null) return head
+      // if (!head || !head.next) return head 终止条件
+      if (head === null || head.next === null) return head
 
       let fast = head, slow = head
 
@@ -70,6 +70,7 @@
 
       return merge(left, right)
     }
+    // 由于上面给定的 l1 l2 是无序的列表，所以我们只能把 l1 l2都分割到只有1个元素
     var merge = function (l1, l2) {
       let list = new ListNode('head')
       let per = list
