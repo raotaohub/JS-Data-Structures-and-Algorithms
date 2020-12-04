@@ -71,11 +71,6 @@ function shellSort2(arr) {
         }
         arr[j] = temp
       }
-      // while (j - gap >= 0 && temp < arr[j - gap]) {
-      //   arr[j] = arr[j - gap];
-      //   j = j - gap;
-      // }
-      // arr[j] = temp;
     }
   }
   console.log(arr)

@@ -36,17 +36,17 @@ function insertionSort(array, compareFn = defaultCompare) {
 
 
 function insertionSort(arr) {
-  const len = arr.length
   let val, index
 
-  for (let i = 1; i < len; i++) { // 第一次 把数组的第1个当成是要插入的值，第0看成是有序的
-    val = arr[i]                  // 保存要插入的值
-    index = i - 1                 // 有序表的最大下标
+  for (let i = 1; i < arr.length; i++) { // 第一次 把数组的第1个当成是要插入的值，第0看成是有序的
+    val = arr[i]                         // 保存要插入的值
+    index = i - 1                        // 有序表的最大下标
 
     while (index >= 0 && val < arr[index]) { // 问,有序表的最大下标是否大于 0 ， 插入值 是否小于有序表最后一个值
-      arr[index + 1] = arr[index]            // 满足，则
+      arr[index + 1] = arr[index]            // 后移操作，就是把 index 位置的元素往后移
       index--
     }
+    // 退出 while 循环的时候有两种情况 ，1: index  为 -1 ; 2: 要插入的数字大于有序列表中的某个数字
     arr[index + 1] = val
 
   }

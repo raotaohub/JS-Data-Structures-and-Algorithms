@@ -20,17 +20,15 @@ function inserSort(arr) {
   let inserVal, inserIndex
 
   for (let i = 1; i < length; i++) {
-    // inserVal 是待插入的数字
-    inserVal = arr[i]
-    inserIndex = i - 1
-    // 1.保证 insertIndex >= 不越界
-    // 2.inserVal < arr[inserIndex] 说明待插入的数字还没找到插入位置
+    inserVal = arr[i]  // inserVal 是待插入的数字
+    inserIndex = i - 1 // 有序表的最大索引值
+    // 1.保证 insertIndex >= 不越界 // 2.inserVal < arr[inserIndex] 说明待插入的数字还没找到插入位置
+
     while (inserIndex >= 0 && inserVal < arr[inserIndex]) {
       arr[inserIndex + 1] = arr[inserIndex] // [7,7,3,8,1]
       inserIndex-- // -1
     }
     arr[inserIndex + 1] = inserVal          // [5,7,3,8,1]
-    console.log(arr)
   }
 }
 
