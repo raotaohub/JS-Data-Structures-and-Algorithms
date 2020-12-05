@@ -10,3 +10,21 @@
 
 
  */
+function selectionSort(arr) {
+  let indexMin
+  for (let i = 0; i < arr.length - 1; i++) {
+    indexMin = i
+
+    for (let j = i; j < arr.length; j++) {        // 注意点：这里的length 不能-1 否则最后一个会排不到 
+      if (arr[indexMin] > arr[j]) {               // 这里要用 arr[indexMin] 来比较
+        indexMin = j
+      }
+    }
+    if (i != indexMin) {
+      [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]]
+    }
+  }
+  return arr
+}
+array = selectionSort([11, 423, 534, 1223, 5345, 745, 73, 123])
+console.log(array.join())

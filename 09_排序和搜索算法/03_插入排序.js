@@ -42,11 +42,11 @@ function insertionSort(arr) {
     val = arr[i]                         // 保存要插入的值
     index = i - 1                        // 有序表的最大下标
 
-    while (index >= 0 && val < arr[index]) { // 问,有序表的最大下标是否大于 0 ， 插入值 是否小于有序表最后一个值
+    while (index >= 0 && val < arr[index]) { // 问,有序表的最大下标是否大于等于 0 ， 插入值 是否小于有序表最后一个值
       arr[index + 1] = arr[index]            // 后移操作，就是把 index 位置的元素往后移
       index--
     }
-    // 退出 while 循环的时候有两种情况 ，1: index  为 -1 ; 2: 要插入的数字大于有序列表中的某个数字
+    // 退出 while 循环的时候有两种情况 ，1: index  为 -1 ; 2: 要插入的数字大于有序列表中的某个数字; 下标要加 1 才是正确的位置
     arr[index + 1] = val
 
   }

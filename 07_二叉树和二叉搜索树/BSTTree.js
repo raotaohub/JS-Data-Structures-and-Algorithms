@@ -208,3 +208,40 @@ console.log(tree.search(10))
 
 tree.remove(5)
 tree.remove(15)
+
+// 反转二叉树
+var invertTree = function (root) {
+  function traversal(root) {
+    if (root === null) {
+      return null
+    } else {
+      [root.left, root.right] = [traversal(root.right), traversal(root.left)]
+      return root
+    }
+  }
+  return traversal(root)
+}
+// 利用中序遍历，查找二叉树中 第 k 小的值
+var kthSmallest = function (root, k) {
+  let arr = []
+  function traversal(node) {
+    if (node !== null) {
+      traversal(node.left)
+      arr.push(node.val)
+      traversal(node.right)
+    }
+  }
+  traversal(root)
+  return arr[k - 1]
+}
+
+// 迭代法 前中后遍历
+
+// let inorderTraversal = function (root) {
+//   const [WHITE, GRAY] = [0, 1]
+//   let res = []
+//   let stack = [(root, WHITE)]
+//   while (stack) {
+
+//   }
+// }
