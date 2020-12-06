@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 
+        输入: 
+          1
+        / \
+        2   3
+      / \  /
+      4  5 6
+
+    输出: 6
+ -->
+<script>
+  var countNodes = function (root) {
+    let result = []
+    function dfs(root) {
+      if (!root) return
+      if (root.left) dfs(root.left)
+      root && result.push(root)
+      if (root.right) dfs(root.right)
+    }
+    dfs(root)
+    return result.length
+  };
+</script>
+
+<body>
+
+</body>
+
+</html>
