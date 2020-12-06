@@ -24,7 +24,7 @@
       if (!root.left && !root.right && root.val == sum) {// 2. 判断
         path.push([...temp])
       }
-      dfs(root.left, sum - root.val, path, temp)  // 3. 递归
+      dfs(root.left, sum - root.val, path, temp)         // 3. 递归
       dfs(root.right, sum - root.val, path, temp)
       temp.pop()          // 4.撤销错误的选择  回溯步骤
     }
