@@ -71,6 +71,9 @@ class BinarySearchTree {
     }
   }
   // 中序遍历
+  inOrderTraverse(callback) {
+    this.inOrderTraverseNode(this.root, callback)
+  }
   inOrderTraverseNode(node, callback) {
     if (node != null) {
       this.inOrderTraverseNode(node.left, callback)
@@ -78,10 +81,11 @@ class BinarySearchTree {
       this.inOrderTraverseNode(node.right, callback)
     }
   }
-  inOrderTraverse(callback) {
-    this.inOrderTraverseNode(this.root, callback)
-  }
+
   // 先序遍历
+  preOrderTraverse(callback) {
+    this.preOrderTraverseNode(this.root, callback)
+  }
   preOrderTraverseNode(node, callback) {
     if (node != null) {
       callback(node.key)
@@ -89,19 +93,16 @@ class BinarySearchTree {
       this.preOrderTraverseNode(node.right, callback)
     }
   }
-  preOrderTraverse(callback) {
-    this.preOrderTraverseNode(this.root, callback)
-  }
   // 后序遍历
+  postOrderTraverse(callback) {
+    this.postOrderTraverseNode(node, callback)
+  }
   postOrderTraverseNode(node, callback) {
     if (node != null) {
       this.postOrderTraverseNode(node.left, callback)
       this.postOrderTraverseNode(node.right, callback)
       callback(node.key)
     }
-  }
-  postOrderTraverse(callback) {
-    this.postOrderTraverseNode(node, callback)
   }
   // 返回最小值
   minNode(node) {
@@ -198,4 +199,5 @@ tree.remove(6)
 tree.remove(5)
 tree.remove(15)
 console.log(tree)
+console.log('——————————————————————————————————————————迭代中序——————————————————————————————————————————')
 

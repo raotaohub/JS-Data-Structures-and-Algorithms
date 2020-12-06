@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var pathSum = function (root, sum) {
+      if (!root) return []
+      let path = []
+      dfs(root, sum, path, [])
+      return path
+    };
+    // 层遍历
+    function dfs(root, sum, path, temp) {
+      if (!root) {
+        return []
+      }
+      temp.push(root.val)  // 选择一个当前节点
+      if (!root.left && !root.right && root.val == sum) {// 2. 判断
+        path.push([...temp])
+      }
+      dfs(root.left, sum - root.val, path, temp)  // 3. 递归
+      dfs(root.right, sum - root.val, path, temp)
+      temp.pop()          // 4.撤销错误的选择  回溯步骤
+    }
+  </script>
+</body>
+
+</html>

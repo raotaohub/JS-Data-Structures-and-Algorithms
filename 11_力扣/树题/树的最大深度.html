@@ -23,11 +23,13 @@
     // BFS(典型的BFS模板写法)
     var maxDepth = function (root) {
       if (root == null) return 0
-      let queue = [root]
+
+      let queue = [root]   // 需要借助一个 队列数据结构
 
       let depah = 1
 
       while (queue.length) {
+        // 保存当前队列的长度
         const leve = queue.length
         for (let i = 0; i < leve; i++) {
           const cur = queue.shift()
@@ -40,8 +42,42 @@
       }
       return depah
     }
+    // 经典BFS模板2
+    var maxDepth = function (root) {
+      if (!root) return 0
+
+      let queue = [root]
+      let depth = 0
+      let j
+
+      while (queue.length) {
+        j = queue.length
+
+        for (let i = 0; i < j; i++) {   //也可写成 while(j--); 意思是把当前栈清空 然后压入左右节点
+          const curNode = queue.shift() // 队列先进先出
+          if (curNode.left) queue.push(curNode.left)
+          if (curNode.right) queue.push(curNode.right)
+        }
+        depth++
+      }
+      return depth
+    }
   </script>
 
 </body>
 
 </html>
+<script>
+  // 树的遍历法
+  function dfs(root) {
+    if (满足特定条件) {
+      // 返回结果 or 退出搜索空间
+    }
+    // 主要逻辑在这就是 前序遍历
+    dfs(root.left)
+    // 主要逻辑在这就是 中序遍历
+    dfs(root.right)
+    // 主要逻辑在这就是 后序遍历
+    // 也存在混合的情况
+  }
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    方式一：中序遍历
+    然后再次遍历是否存在 前一个大于后一个的情况
+   -->
+  <script>
+    var isValidBST = function (root) {
+      if (!root) return true
+      let result = []
+      // 中序遍历
+      function dfs(root) {
+        if (!root) { return }
+        if (root.left) { dfs(root.left) }
+        if (root) { result.push(root.val) }
+        if (root.right) { dfs(root.right) }
+      }
+      dfs(root)
+
+      console.log(result)
+      for (let i = 0; i < result.length - 1; i++) {
+        if (result[i] >= result[i + 1]) {
+          return false
+        }
+      }
+      return true
+    }
+  </script>
+  <!-- 
+    方式二: DFS 在递归中判断 这个方式有待考究
+   -->
+  <script>
+    // var isValidBST = function (root) {
+
+    //   function dfs(root) {
+    //     if (!root) return true
+
+    //     if (root.left) {
+    //       if (root.left.val >= root.val) return false
+    //     }
+
+    //     if (root.right) {
+    //       if (root.right.val <= root.val) return false
+
+    //     }
+
+    //     return dfs(root.left) && dfs(root.right)
+    //   }
+
+    //   return dfs(root)
+    // }
+
+  </script>
+</body>
+
+</html>
