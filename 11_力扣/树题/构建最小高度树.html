@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    选取数组中间的元素为根元素，那么数组左边的元素则是左子树上的元素，数组右边的元素是又子树上的元素
+    重复这个过程
+   -->
+  <script>
+    var sortedArrayToBST = function (nums) {
+
+      if (nums.length === 0) return null
+
+      let mid = Math.floor(nums.length / 2)
+
+      let root = new TreeNode(nums[mid])
+
+      root.left = sortedArrayToBST(nums.slice(0, mid))
+      root.right = sortedArrayToBST(nums.slice(mid + 1))
+
+      return root
+    }
+
+  </script>
+
+</body>
+
+</html>

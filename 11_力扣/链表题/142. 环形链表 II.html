@@ -23,6 +23,7 @@
   <script>
     // 哈希表
     var detectCycle = function (head) {
+
       let map = new Map()
 
       while (head) {
@@ -45,7 +46,7 @@
       while (quick && quick.next) { // 因为快指针走2步，所以如果发现链表为null 则说明无环
         quick = quick.next.next
         slow = slow.next
-        if (quick == slow) {        // 首先判断有没有环，如果有环的话进入第二个判断
+        if (quick == slow) {        // 首先判断有没有环，如果有环的话进入第二个循环
           let slow = head           // 让一个指针指向head 
           while (slow != quick) {   // 然后同步迭代 当相同的时候 则他们处于入环的节点
             slow = slow.next

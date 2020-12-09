@@ -25,6 +25,8 @@
 
     建议反复敲，敲多了就知道什么一回事了。
 
+
+    本题是前序构建
   -->
   <script>
     const serialize = (root) => {
@@ -40,13 +42,13 @@
           res.push('X');            // X 推入res
         }
       }
-      return res.join(',');  // 转成字符串
+      return res.join(',');         // 数组按,转成字符串
     }
 
     const deserialize = (data) => {
       if (data == 'X') return null;
 
-      const list = data.split(',');  // 序列化字符串split成数组
+      const list = data.split(',');  // 按,转成数组
 
       const root = new TreeNode(list[0]); // 获取首项，构建根节点
       const queue = [root];          // 根节点推入队列
@@ -72,6 +74,50 @@
       }
       return root;  // BFS结束，构建结束，返回根节点
     };
+
+
+  </script>
+  <!-- 
+    DFS法
+  -->
+  <script>
+    var serialize = function (root) {
+      let values = [];
+
+      (function dfs(node) {
+        if (!node) return values.push(null);
+
+        values.push(node.val); // 根
+
+        dfs(node.left);        // 左
+
+        dfs(node.right);       // 右
+
+      })(root)
+
+      return JSON.stringify(values);
+    };
+
+    var deserialize = function (data) {
+      let values = JSON.parse(data);
+
+      return (function getTree() {
+        let value = values.shift();
+        if (value === null) return null;
+
+        let node = new TreeNode(value); // 根
+        node.left = getTree();          // 左
+        node.right = getTree();         // 右
+
+        return node;
+
+      })();
+
+    };
+
+    // https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/solution/jsxu-lie-hua-yu-fan-xu-lie-hua-by-kian2020/
+
+
 
   </script>
 </head>
