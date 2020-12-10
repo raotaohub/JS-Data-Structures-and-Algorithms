@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>只出现一次的数字</title>
+</head>
+<body>
+<script>
+    var singleNumber = function (nums) {
+        let set = new Set()
+        for (let i = 0; i < nums.length; i++) {
+            if (set.has(nums[i])) {
+                set.delete(nums[i])
+                continue
+            }
+            set.add(nums[i])
+        }
+        return [...set]
+    }
+    // 异或的意思是 比如
+    //  10100
+    //^ 11010
+    //  01110
+    // 相同的数字 异或得 0 ，0 异或 a 得 a
+    var singleNumber = function (nums) {
+
+        for (let i = 1; i < nums.length; i++) {
+            nums[0] ^= nums[i]
+        }
+        console.log(nums)
+        return nums[0]
+    }
+
+</script>
+</body>
+</html>

@@ -19,7 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="新增力扣617. 合并二叉树" />
+    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="新增力扣617. 合并二叉树">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/11_力扣/136. 只出现一次的数字.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/11_力扣/树题/226. 翻转二叉树.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/10_基础算法题/02_反转字符串.html" beforeDir="false" afterPath="$PROJECT_DIR$/10_基础算法题/02_反转字符串.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11_力扣/树题/513. 找树左下角的值BFS题.html" beforeDir="false" afterPath="$PROJECT_DIR$/11_力扣/树题/513. 找树左下角的值BFS题.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +63,8 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -66,7 +74,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607584783003</updated>
-      <workItem from="1607584785176" duration="3828000" />
+      <workItem from="1607584785176" duration="5081000" />
+      <workItem from="1607590523756" duration="8337000" />
     </task>
     <task id="LOCAL-00001" summary="新增力扣617. 合并二叉树">
       <created>1607588784134</created>
@@ -91,15 +100,28 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新增力扣617. 合并二叉树" />
     <option name="LAST_COMMIT_MESSAGE" value="新增力扣617. 合并二叉树" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="329" y="77" key="SettingsEditor" timestamp="1607589069040">
+    <state x="410" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607589217818">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="329" y="77" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607589069040" />
+    <state x="410" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607589217818" />
+    <state x="329" y="77" key="SettingsEditor" timestamp="1607592411701">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="329" y="77" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607592411700" />
+    <state x="723" y="411" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607589114778">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="723" y="411" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607589114778" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1607590400436">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607590400436" />
   </component>
 </project>

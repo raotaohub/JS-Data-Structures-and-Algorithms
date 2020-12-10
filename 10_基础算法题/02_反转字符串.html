@@ -2,25 +2,36 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
 
-  </style>
+    </style>
 </head>
 
 <body>
-  <script>
+<script>
     function reverseString(str) {
 
-      let a = str.split('').reverse()
+        let a = str.split('').reverse()
 
-      return a.join('')
+        return a.join('')
 
     }
+
     reverseString("hello");
     console.log(reverseString("hello"))
+
+    function reverseString(str) {
+        if (!str) {
+            return null
+        }
+        let len = Math.floor(str.length / 2)
+        for (let i = 0, j = str.length - 1; i < j; i++, j--) {
+
+        }
+    }
 
     // console.log('-------------------------------------------------------------------------')
     // console.log(1 + '1') // 11
@@ -39,15 +50,16 @@
     let a = 1
 
     function aa() {
-      console.log(a) //输出1
+        console.log(a) //输出1
     }
 
     function bb() {
-      let a = 2
-      aa()
+        let a = 2
+        aa()
     }
+
     bb() // 输出 a
-  </script>
+</script>
 </body>
 
 </html>
