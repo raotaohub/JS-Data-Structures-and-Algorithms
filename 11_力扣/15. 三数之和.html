@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var threeSum = function (nums) {
+      if (nums.length < 3) return []
+      nums.sort((a, b) => a - b)
+      return bfs(nums)
+    };
+
+    const bfs = function (array) {
+      let map = new Map()
+      let list = []
+      for (let i = 0, len = array.length; i < len; i++) {
+        for (let j = i + 1; j < len; j++) {
+          for (let k = j + 1; k < len; k++) {
+            if (array[i] + array[j] + array[k] === 0) {
+              list.push([array[i], array[j], array[k]])
+
+            }
+          }
+        }
+
+      }
+
+      return list
+    }
+
+  </script>
+</body>
+
+</html>

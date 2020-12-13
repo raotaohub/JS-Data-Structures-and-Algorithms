@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="新增力扣617. 合并二叉树">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/11_力扣/136. 只出现一次的数字.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/11_力扣/树题/226. 翻转二叉树.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/10_基础算法题/02_反转字符串.html" beforeDir="false" afterPath="$PROJECT_DIR$/10_基础算法题/02_反转字符串.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11_力扣/树题/513. 找树左下角的值BFS题.html" beforeDir="false" afterPath="$PROJECT_DIR$/11_力扣/树题/513. 找树左下角的值BFS题.html" afterDir="false" />
-    </list>
+    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="新增力扣617. 合并二叉树" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607584783003</updated>
       <workItem from="1607584785176" duration="5081000" />
-      <workItem from="1607590523756" duration="8337000" />
+      <workItem from="1607590523756" duration="8932000" />
     </task>
     <task id="LOCAL-00001" summary="新增力扣617. 合并二叉树">
       <created>1607588784134</created>
