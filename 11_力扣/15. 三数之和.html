@@ -9,6 +9,7 @@
 
 <body>
   <script>
+    // 错误的暴力解法
     var threeSum = function (nums) {
       if (nums.length < 3) return []
       nums.sort((a, b) => a - b)
@@ -16,22 +17,95 @@
     };
 
     const bfs = function (array) {
-      let map = new Map()
       let list = []
       for (let i = 0, len = array.length; i < len; i++) {
         for (let j = i + 1; j < len; j++) {
           for (let k = j + 1; k < len; k++) {
             if (array[i] + array[j] + array[k] === 0) {
               list.push([array[i], array[j], array[k]])
-
             }
           }
         }
-
       }
-
       return list
     }
+
+
+    const threeSum = (nums) => {
+      nums.sort((a, b) => a - b); // 排序
+
+      const res = [];
+
+      for (let i = 0; i < nums.length - 2; i++) { // 外层遍历
+        let n1 = nums[i];
+        if (n1 > 0) break; // 如果已经爆0，不用做了，break
+        if (i - 1 >= 0 && n1 == nums[i - 1]) continue; // 遍历到重复的数，跳过    
+
+        let left = i + 1;            // 左指针
+        let right = nums.length - 1; // 右指针
+
+        while (left < right) {
+          let n2 = nums[left], n3 = nums[right];
+
+          if (n1 + n2 + n3 === 0) {  // 三数和=0，加入解集res
+            res.push([n1, n2, n3]);
+            while (left < right && nums[left] == n2) left++; // 直到指向不一样的数
+            while (left < right && nums[right] == n3) right--; // 直到指向不一样的数
+          } else if (n1 + n2 + n3 < 0) { // 三数和小于0，则左指针右移
+            left++;
+          } else {      // 三数和大于0，则右指针左移
+            right--;
+          }
+        }
+      }
+      return res;
+    };
+
+    // 作者：xiao_ben_zhu
+    // 链接：https://leetcode-cn.com/problems/3sum/solution/zhi-zhen-yi-dong-guo-cheng-zhong-tiao-guo-zhong-fu/
+    // 来源：力扣（LeetCode）
+    // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+    const threeSum = (nums) => {
+      let length = nums.length    // 先获取 nums 的长度
+      if (length < 3) {           // 判断边界 若数字不足3个则返回空数组
+        return []
+      }
+      nums.sort((a, b) => a - b)  // 先排序便于判断
+      const result = []
+
+      for (let i = 0; i < length; i++) {
+        let n1 = nums[i]
+
+        if (n1 > 0) { break }     // 如果数组中 最小的值 都大于0 说明根本不存在三数之和为 0
+        if (i - 1 >= 0 && n1 == nums[i - 1]) { continue } // 去重 若当前数和前一个数相等 则跳过 
+
+        let left = i + 1          // 确定左指针
+        let right = length - 1    // 右指针
+
+        while (left < right) {    // 循环
+
+          let n2 = nums[left], n3 = nums[right]
+
+          if (n1 + n2 + n3 == 0) {// 若三数之和等于 0  则放入元组
+            result.push([n1, n2, n3])
+            // 去重步骤
+            while (left < right && n2 == nums[left]) { left++ } // 迭代左右指针，若左右指针迭代后值和上次次一样则继续迭代
+            while (left < right && n3 == nums[right]) { right++ }
+          } else if (n1 + n2 + n3 < 0) {
+            left++                        // 若三数之和小于 0  则迭代左指针 
+          } else {
+            right--                       // 若三数之和大于 0  则迭代右指针
+          }
+        }
+      }
+      return result
+    }
+
+    // 输入 [-1,0,1,2,-1,-4] => sort => [-4,-1,-1,0,1,2], 
+    //                                    |  |        |
+    //                                    i  L        R
 
   </script>
 </body>
