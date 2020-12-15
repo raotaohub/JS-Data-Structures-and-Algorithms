@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>617. 合并二叉树</title>
 </head>
+
 <body>
-<!--
+    <!--
 递归。总是关注当前节点
 t1t1 为 null 、t2t2 不是 null，t1t1 换成 t2t2 。（return t2）
 t2t2 为 null、t1t1 不是 null，t1t1 依然 t1t1 。（return t1）
@@ -18,43 +20,43 @@ t1.left = mergeTrees(t1.left, t2.left);
 t1.right = mergeTrees(t1.right, t2.right);
 
 -->
-<script>
+    <script>
 
-    <!--
-    直接在原来的树上修改 -->
+        // < !--直接在原来的树上修改 -->
 
-    var mergeTrees = function (t1, t2) {
-        function dfs(t1, t2) {
+        var mergeTrees = function (t1, t2) {
+            function dfs(t1, t2) {
+                if (!t1 && t2) return t2
+                if (!t2 && t1) return t1
+                if (!t1 && !t2) return t1
+                t1.val += t2.val
+
+                t1.left = dfs(t1.left, t2.left)
+                t1.right = dfs(t1.right, t2.right)
+
+                return t1
+            }
+
+            return dfs(t1, t2)
+        };
+
+        // < !--新建一棵树-->
+
+        const mergeTrees2 = function (t1, t2) {
             if (!t1 && t2) return t2
             if (!t2 && t1) return t1
             if (!t1 && !t2) return t1
-            t1.val += t2.val
 
-            t1.left = dfs(t1.left, t2.left)
-            t1.right = dfs(t1.right, t2.right)
+            const root = new TreeNode(t1.val + t2.val)
 
-            return t1
+            root.left = mergeTrees2(t1.left, t2.left)
+            root.right = mergeTrees2(t1.right, t2.right)
+
+            return root
         }
 
-        return dfs(t1, t2)
-    };
-
-    <!--    新建一棵树-->
-
-    const mergeTrees2 = function (t1, t2) {
-        if (!t1 && t2) return t2
-        if (!t2 && t1) return t1
-        if (!t1 && !t2) return t1
-
-        const root = new TreeNode(t1.val + t2.val)
-
-        root.left = mergeTrees2(t1.left, t2.left)
-        root.right = mergeTrees2(t1.right, t2.right)
-
-        return root
-    }
-
-</script>
+    </script>
 
 </body>
+
 </html>

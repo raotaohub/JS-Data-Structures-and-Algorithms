@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var inorderTraversal = function (root) {
+    //     let result = []
+    //     function dfs(root) {
+    //         if (!root) {
+    //             return
+    //         }
+    //         root.left && dfs(root.left)
+    //         result.push(root.val)
+    //         root.right && dfs(root.right)
+    //     }
+    //     dfs(root)
+    //     return result
+    // };
+
+    var inorderTraversal = function (root) {
+      let stack = []
+      let result = []
+
+      while (root || stack.length) {
+        while (root) {
+          stack.push(root)
+          var root = root.left
+        }
+        root = stack.pop()
+        result.push(root.val)
+        root = root.right
+      }
+      return result
+    };
+  </script>
+
+</body>
+
+</html>
