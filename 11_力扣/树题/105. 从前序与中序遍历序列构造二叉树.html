@@ -28,9 +28,8 @@
       let mid = inorder.indexOf(node)
       let root = new TreeNode(node)
 
-
       root.left = buildTree(preorder.slice(1, mid + 1), preorder.slice(mid + 1))
-
+      root.right = buildTree(preorder.slice(mid + 1),)
     }
 
   </script>
