@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>290. 单词的规律</title>
+</head>
+<!-- 
+  示例1:
+    输入: pattern = "abba", str = "dog cat cat dog"
+    输出: true
+
+    示例 2:
+    输入:pattern = "abba", str = "dog cat cat fish"
+    输出: false
+
+  示例 3:
+    输入: pattern = "aaaa", str = "dog cat cat dog"
+    输出: false
+
+  示例 4:
+    输入: pattern = "abba", str = "dog dog dog dog"
+    输出: false
+
+
+  来源：力扣（LeetCode）
+  链接：https://leetcode-cn.com/problems/word-pattern
+  著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ -->
+<!-- 
+   解题思路
+  利用一个 map 来存储 pattern 和 str 的关系
+
+  例如 输入:pattern = "abba", str = "dog cat cat fish"
+
+  老套路 进入循环先判断 map 中有无 ； 没有则设置键值对
+  这里我们将 pattern数组的元素作为键，str数组的元素作为值。
+
+  伪代码开始模拟
+
+  1 => for => map中有无 a ? 
+      无 =>  map.set(a,dog)
+        
+  2 => for => map中有无 b ? 
+      无 => map.set(b,cat)
+
+  3 => for => map中有无 b ?
+      有, 我们的map中已有的 b映射cat 
+          => 检查一下 cat 是否为 b映射的cat？
+              => map.get(b) == cat == cat ,
+                  => 不进入 if 语句
+
+  4 => for => map 中 有无a ?
+      有, 我们的map中已有 a映射dog
+          => 检查一下 fish 是否为 a映射的cat？
+              => map.get(a) ==cat ==fish 错误 fish !=cat 
+                  => 进入 if 语句 
+                    => retrun false
+
+  -->
+
+<body>
+  <script>
+    var wordPattern = function (pattern, s) {
+      var pattern = String(pattern).toLowerCase().split('')
+      var s = String(s).toLowerCase().split(' ')
+
+      let setP = Array.from(new Set(pattern)), setS = Array.from(new Set(s))
+
+      if (setP.length !== setS.length || pattern.length !== s.length) { return false }
+
+      let map = new Map(), eleP, eleS
+
+      for (let i = 0; i < pattern.length; i++) {
+        eleP = pattern[i]
+        eleS = s[i]
+        if (map.has(eleP) && map.get(eleP) != eleS) {
+          return false
+        }
+        map.set(eleP, eleS)
+      }
+      return true
+    }
+
+  </script>
+
+</body>
+
+</html>
