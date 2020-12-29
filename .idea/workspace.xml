@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="新增力扣617. 合并二叉树" />
+    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="新增力扣617. 合并二叉树">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_字典和散列表/hashtable.js" beforeDir="false" afterPath="$PROJECT_DIR$/05_字典和散列表/hashtable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09_排序和搜索算法/06_快速排序.js" beforeDir="false" afterPath="$PROJECT_DIR$/09_排序和搜索算法/06_快速排序.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,6 +73,7 @@
       <updated>1607584783003</updated>
       <workItem from="1607584785176" duration="5081000" />
       <workItem from="1607590523756" duration="8932000" />
+      <workItem from="1609243475250" duration="3071000" />
     </task>
     <task id="LOCAL-00001" summary="新增力扣617. 合并二叉树">
       <created>1607588784134</created>
