@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二叉树的前序遍历</title>
+</head>
+<body>
+<div>
+    https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/hard/145.binary-tree-postorder-traversal
+</div>
+<script>
+  // dfs 法
+  var preorderTraversal = function (root) {
+    let result = []
+    function bfs(root) {
+      if (!root) {
+        return
+      }
+      result.push(root.val)
+      root.left && bfs(root.left)
+      root.right && bfs(root.right)
+    }
+    bfs(root)
+    return result
+  };
+
+  var preorderTraversal = function (root) {
+    // 1. 判断 root 是否存在 如果存在把他加入 stack
+    let stack = root ? [root] : []
+    let result = []
+    while (stack.length) {
+
+      const node = stack.pop()      // 1.每次先取出 stack 最后的节点
+
+      result.push(node.val)         // 2. 然后将该节点的值 加入结果
+
+      node.right && stack.push(node.right);  // 3. 先访问 右节点
+
+      node.left && stack.push(node.left);    // 4. 再访问 左节点
+    }
+    return result
+  };
+</script>
+
+</body>
+</html>

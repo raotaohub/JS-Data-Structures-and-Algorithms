@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二叉树的后序遍历</title>
+</head>
+<body>
+<div>
+    https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
+</div>
+<script>
+  // 递归法
+  var postorderTraversal = function (root) {
+    let result = []
+    function bfs(root) {
+      if (!root) {
+        return
+      }
+      root.left && bfs(root.left)
+      root.right && bfs(root.right)
+      result.push(root.val)
+    }
+    bfs(root)
+    return result
+  };
+  // 迭代法 拟操作前序遍历 stack
+  var postorderTraversal = function (root) {
+    const stack = root ? [root] : [];
+    const result = [];
+    while (stack.length) {
+
+      const node = stack.pop();     // 1. 弹出栈顶元素
+
+      result.unshift(node.val);    // 2. 逆前序遍历操作 使用 unshift
+
+      node.left && stack.push(node.left);    // 3. 先访问左节点
+
+      node.right && stack.push(node.right);  // 4. 再访问右节点
+    }
+    return result;
+  };
+</script>
+</body>
+</html>
