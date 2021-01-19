@@ -19,15 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="新增力扣617. 合并二叉树">
-      <change afterPath="$PROJECT_DIR$/11_力扣/树题/二叉树的遍历/二叉树的中序遍历.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/11_力扣/树题/二叉树的遍历/二叉树的前序遍历.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/11_力扣/树题/二叉树的遍历/二叉树的后序遍历.html" afterDir="false" />
+    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="中序遍历、后序遍历">
+      <change afterPath="$PROJECT_DIR$/11_力扣/字符串题/3. 无重复字符串的长度.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/09_排序和搜索算法/06_快速排序.js" beforeDir="false" afterPath="$PROJECT_DIR$/09_排序和搜索算法/06_快速排序.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11_力扣/树题/中序遍历.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/11_力扣/树题/二叉树类型题目的总结.md" beforeDir="false" afterPath="$PROJECT_DIR$/11_力扣/树题/二叉树类型题目的总结.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11_力扣/链表题/相交链表.md" beforeDir="false" afterPath="$PROJECT_DIR$/11_力扣/链表题/相交链表.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +81,8 @@
       <workItem from="1610375844516" duration="668000" />
       <workItem from="1610433294547" duration="4096000" />
       <workItem from="1610546213245" duration="6004000" />
-      <workItem from="1610781526723" duration="12684000" />
+      <workItem from="1610781526723" duration="12782000" />
+      <workItem from="1611052151349" duration="1957000" />
     </task>
     <task id="LOCAL-00001" summary="新增力扣617. 合并二叉树">
       <created>1607588784134</created>
@@ -110,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609513484454</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="中序遍历、后序遍历">
+      <created>1610812215366</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610812215366</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +132,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新增力扣617. 合并二叉树" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增力扣617. 合并二叉树" />
+    <MESSAGE value="中序遍历、后序遍历" />
+    <option name="LAST_COMMIT_MESSAGE" value="中序遍历、后序遍历" />
   </component>
   <component name="WindowStateProjectService">
     <state x="410" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607589217818">
@@ -141,9 +144,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="329" y="77" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607592411700" />
-    <state x="452" y="206" key="Vcs.Push.Dialog.v2" timestamp="1609513490064">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="452" y="198" key="Vcs.Push.Dialog.v2" timestamp="1610812217675">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="452" y="198" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1610812217675" />
     <state x="452" y="206" key="Vcs.Push.Dialog.v2/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1609513490064" />
     <state x="723" y="411" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607589114778">
       <screen x="0" y="0" width="1920" height="1040" />
