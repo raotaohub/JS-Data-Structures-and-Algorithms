@@ -19,19 +19,19 @@ function quickSort(arr, left, right) {
 
     [arr[l], arr[r]] = [arr[r], arr[l]] // 交换
 
-    if (arr[l] == pivot) {
+    if (arr[l] === pivot) {
       r--
     }
-    if (arr[r] == pivot) {
+    if (arr[r] === pivot) {
       l++
     }
-    if (l == r) {
+    if (l === r) {
       l++
       r--
     }
   }
   // 如果l==r 那么必须让他们继续移动 否则会死循环
-  if (l == r) {
+  if (l === r) {
     l++
     r--
   }
@@ -54,44 +54,44 @@ console.log(arr);
  *       2.2）重复这个过程直到 大的都在主元右侧，小的都在左侧
  *   3）对划分后的小数组重复上面的过程，直到数组都已经排序完成
  */
-
-function quickSort2(array) {
-  return quick(array, 0, array.length - 1)
-};
-
-function quick(array, left, right) {
-  let index
-  if (array.length > 1) {
-    index = partition(array, left, right)
-    if (left < index - 1) {
-      quick(array, left, index - 1)
-    }
-    if (right > index) {
-      quick(array, index, right)
-    }
-  }
-  return array
-}
-
-function partition(array, left, right) {
-  let pivot = array[Math.floor((right + left) / 2)]
-  let l = left
-  let r = right
-
-  while (l <= r) {
-    while (array[l] < pivot) {
-      l++
-    }
-    while (array[r] > pivot) {
-      r--
-    }
-    if (l <= r) {
-      [arr[l], arr[r]] = [arr[r], arr[l]]
-      l++
-      r--
-    }
-  }
-  return l
-}
+//
+// function quickSort2(array) {
+//   return quick(array, 0, array.length - 1)
+// };
+//
+// function quick(array, left, right) {
+//   let index
+//   if (array.length > 1) {
+//     index = partition(array, left, right)
+//     if (left < index - 1) {
+//       quick(array, left, index - 1)
+//     }
+//     if (right > index) {
+//       quick(array, index, right)
+//     }
+//   }
+//   return array
+// }
+//
+// function partition(array, left, right) {
+//   let pivot = array[Math.floor((right + left) / 2)]
+//   let l = left
+//   let r = right
+//
+//   while (l <= r) {
+//     while (array[l] < pivot) {
+//       l++
+//     }
+//     while (array[r] > pivot) {
+//       r--
+//     }
+//     if (l <= r) {
+//       [arr[l], arr[r]] = [arr[r], arr[l]]
+//       l++
+//       r--
+//     }
+//   }
+//   return l
+// }
 
 // console.log(quickSort2(arr));

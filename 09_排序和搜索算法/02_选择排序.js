@@ -15,16 +15,37 @@ function selectionSort(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     indexMin = i
 
-    for (let j = i; j < arr.length; j++) {        // 注意点：这里的length 不能-1 否则最后一个会排不到 
+    for (let j = i + 1; j < arr.length; j++) {        // 注意点：这里的length 不能-1 否则最后一个会排不到
       if (arr[indexMin] > arr[j]) {               // 这里要用 arr[indexMin] 来比较
         indexMin = j
       }
     }
-    if (i != indexMin) {
+    if (i !== indexMin) {
       [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]]
     }
   }
   return arr
 }
-array = selectionSort([11, 423, 534, 1223, 5345, 745, 73, 123])
+let array = selectionSort([11, 423, 534, 1223, 5345, 745, 73, 123])
 console.log(array.join())
+
+function selectionSort2(list) {
+  let minIndex
+
+  for (let i = 0; i < list.length - 1; i++) {
+    minIndex = i
+
+    for (let j = i + 1; j < list.length; j++) {
+      if (list[minIndex] > list[j]) {
+        minIndex = j
+      }
+    }
+    if (minIndex != i) {
+      [list[i], list[minIndex]] = [list[minIndex], list[i]]
+    }
+  }
+  return list
+}
+
+let array2 = selectionSort2([11, 423, 534, 1223, 5345, 745, 73, 123])
+console.log(array2.join() + '选择排序2')

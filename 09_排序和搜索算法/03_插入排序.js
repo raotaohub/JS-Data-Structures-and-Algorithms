@@ -13,13 +13,13 @@ function swap(array, a, b) {
   [array[a], array[b]] = [array[b], array[a]]
 }
 /**注释
-* 插入排序每次排一个数组项，以此方式构建最后的排序数组。假定第一项已经排序了。接着，
-* 它和第二项进行比较——第二项是应该待在原位还是插到第一项之前呢？这样，头两项就已正确
-* 排序，接着和第三项比较（它是该插入到第一、第二还是第三的位置呢），以此类推。
-*
-*/
+ * 插入排序每次排一个数组项，以此方式构建最后的排序数组。假定第一项已经排序了。接着，
+ * 它和第二项进行比较——第二项是应该待在原位还是插到第一项之前呢？这样，头两项就已正确
+ * 排序，接着和第三项比较（它是该插入到第一、第二还是第三的位置呢），以此类推。
+ *
+ */
 function insertionSort(array, compareFn = defaultCompare) {
-  const { length } = array; // {1}
+  const {length} = array; // {1}
   let temp;
   for (let i = 1; i < length; i++) { // {2}
     let j = i; // {3}
@@ -32,8 +32,6 @@ function insertionSort(array, compareFn = defaultCompare) {
   }
   return array;
 };
-
-
 
 function insertionSort(arr) {
   let val, index
@@ -48,7 +46,6 @@ function insertionSort(arr) {
     }
     // 退出 while 循环的时候有两种情况 ，1: index  为 -1 ; 2: 要插入的数字大于有序列表中的某个数字; 下标要加 1 才是正确的位置
     arr[index + 1] = val
-
   }
   return arr
 }

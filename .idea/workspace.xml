@@ -19,9 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="中序遍历、后序遍历">
-      <change afterPath="$PROJECT_DIR$/11_力扣/字符串题/3. 无重复字符串的长度.html" afterDir="false" />
+    <list default="true" id="15e66360-9f96-41a6-a158-51b4dab43227" name="默认的" comment="新增力扣 3. 无重复字符串的长度&#10;  // 思路：用一个数组保存遍历的字符&#10;  // 遍历字符的时候，先查看这个字符是否已经出现在数组中了，&#10;  //    1. 如果没有出现,就push到数组尾巴&#10;  //    2. 如果已经出现过,就要把数组里存储的字符都删了&#10;  //    3. 用一个max变量默认为0，用来保存长度较大的值&#10;  //    假设有 字符串 ‘abcab’ 那么数组会push到 ['a','b','c']&#10;  //    当遍历到 a 的时候，由于 a 已经出现过了，因此index = 0 , 执行splice(0,1) arr=['b','c','a']  max = 3&#10;  //    接着遍历 b 的时候，由于 b 也出现过了，  因此index = 0 , 执行splice(0,1) arr=['c','a','b']  max = 3&#10;  //    遍历结束 返回 max">
+      <change afterPath="$PROJECT_DIR$/09_排序和搜索算法/06_快排.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/11_力扣/字符串题/4. 寻找两个正序数组的中位数.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09_排序和搜索算法/02_选择排序.js" beforeDir="false" afterPath="$PROJECT_DIR$/09_排序和搜索算法/02_选择排序.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09_排序和搜索算法/03_插入.js" beforeDir="false" afterPath="$PROJECT_DIR$/09_排序和搜索算法/03_插入.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09_排序和搜索算法/03_插入排序.js" beforeDir="false" afterPath="$PROJECT_DIR$/09_排序和搜索算法/03_插入排序.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09_排序和搜索算法/04_希尔排序.js" beforeDir="false" afterPath="$PROJECT_DIR$/09_排序和搜索算法/04_希尔排序.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09_排序和搜索算法/06_快速排序.js" beforeDir="false" afterPath="$PROJECT_DIR$/09_排序和搜索算法/06_快速排序.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +38,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -67,6 +74,24 @@
       <recent name="C:\Users\raota\Desktop\JS数据结构与算法\11_力扣\树题\二叉树的遍历" />
     </key>
   </component>
+  <component name="RunManager" selected="Node.js.06_快排.js">
+    <configuration name="04_希尔排序.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/09_排序和搜索算法/04_希尔排序.js" working-dir="$PROJECT_DIR$/09_排序和搜索算法">
+      <method v="2" />
+    </configuration>
+    <configuration name="06_快排.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/09_排序和搜索算法/06_快排.js" working-dir="$PROJECT_DIR$/09_排序和搜索算法">
+      <method v="2" />
+    </configuration>
+    <configuration name="06_快速排序.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/09_排序和搜索算法/06_快速排序.js" working-dir="$PROJECT_DIR$/09_排序和搜索算法">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.06_快排.js" />
+        <item itemvalue="Node.js.06_快速排序.js" />
+        <item itemvalue="Node.js.04_希尔排序.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -82,7 +107,7 @@
       <workItem from="1610433294547" duration="4096000" />
       <workItem from="1610546213245" duration="6004000" />
       <workItem from="1610781526723" duration="12782000" />
-      <workItem from="1611052151349" duration="1957000" />
+      <workItem from="1611052151349" duration="18725000" />
     </task>
     <task id="LOCAL-00001" summary="新增力扣617. 合并二叉树">
       <created>1607588784134</created>
@@ -112,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610812215366</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="新增力扣 3. 无重复字符串的长度&#10;  // 思路：用一个数组保存遍历的字符&#10;  // 遍历字符的时候，先查看这个字符是否已经出现在数组中了，&#10;  //    1. 如果没有出现,就push到数组尾巴&#10;  //    2. 如果已经出现过,就要把数组里存储的字符都删了&#10;  //    3. 用一个max变量默认为0，用来保存长度较大的值&#10;  //    假设有 字符串 ‘abcab’ 那么数组会push到 ['a','b','c']&#10;  //    当遍历到 a 的时候，由于 a 已经出现过了，因此index = 0 , 执行splice(0,1) arr=['b','c','a']  max = 3&#10;  //    接着遍历 b 的时候，由于 b 也出现过了，  因此index = 0 , 执行splice(0,1) arr=['c','a','b']  max = 3&#10;  //    遍历结束 返回 max">
+      <created>1611065237503</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611065237503</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,21 +165,38 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新增力扣617. 合并二叉树" />
     <MESSAGE value="中序遍历、后序遍历" />
-    <option name="LAST_COMMIT_MESSAGE" value="中序遍历、后序遍历" />
+    <MESSAGE value="新增力扣 3. 无重复字符串的长度&#10;  // 思路：用一个数组保存遍历的字符&#10;  // 遍历字符的时候，先查看这个字符是否已经出现在数组中了，&#10;  //    1. 如果没有出现,就push到数组尾巴&#10;  //    2. 如果已经出现过,就要把数组里存储的字符都删了&#10;  //    3. 用一个max变量默认为0，用来保存长度较大的值&#10;  //    假设有 字符串 ‘abcab’ 那么数组会push到 ['a','b','c']&#10;  //    当遍历到 a 的时候，由于 a 已经出现过了，因此index = 0 , 执行splice(0,1) arr=['b','c','a']  max = 3&#10;  //    接着遍历 b 的时候，由于 b 也出现过了，  因此index = 0 , 执行splice(0,1) arr=['c','a','b']  max = 3&#10;  //    遍历结束 返回 max" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增力扣 3. 无重复字符串的长度&#10;  // 思路：用一个数组保存遍历的字符&#10;  // 遍历字符的时候，先查看这个字符是否已经出现在数组中了，&#10;  //    1. 如果没有出现,就push到数组尾巴&#10;  //    2. 如果已经出现过,就要把数组里存储的字符都删了&#10;  //    3. 用一个max变量默认为0，用来保存长度较大的值&#10;  //    假设有 字符串 ‘abcab’ 那么数组会push到 ['a','b','c']&#10;  //    当遍历到 a 的时候，由于 a 已经出现过了，因此index = 0 , 执行splice(0,1) arr=['b','c','a']  max = 3&#10;  //    接着遍历 b 的时候，由于 b 也出现过了，  因此index = 0 , 执行splice(0,1) arr=['c','a','b']  max = 3&#10;  //    遍历结束 返回 max" />
   </component>
   <component name="WindowStateProjectService">
     <state x="410" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607589217818">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="410" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607589217818" />
+    <state width="1894" height="266" key="GridCell.Tab.0.bottom" timestamp="1611156139700">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1894" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611156139700" />
+    <state width="1894" height="266" key="GridCell.Tab.0.center" timestamp="1611156139699">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1894" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611156139699" />
+    <state width="1894" height="266" key="GridCell.Tab.0.left" timestamp="1611156139699">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1894" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611156139699" />
+    <state width="1894" height="266" key="GridCell.Tab.0.right" timestamp="1611156139700">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1894" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611156139700" />
     <state x="329" y="77" key="SettingsEditor" timestamp="1607592411701">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="329" y="77" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607592411700" />
-    <state x="452" y="198" key="Vcs.Push.Dialog.v2" timestamp="1610812217675">
+    <state x="452" y="198" key="Vcs.Push.Dialog.v2" timestamp="1611065251443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="198" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1610812217675" />
+    <state x="452" y="198" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611065251443" />
     <state x="452" y="206" key="Vcs.Push.Dialog.v2/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1609513490064" />
     <state x="723" y="411" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607589114778">
       <screen x="0" y="0" width="1920" height="1040" />
