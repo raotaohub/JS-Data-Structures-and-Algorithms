@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      var a = 2
+      /* 利用 map 来搜寻，map可以保证存储的值不重复*/
+      var twoSum = function (nums, target) {
+        let map = new Map()
+        for (let i = 0; i < nums.length; i++) {
+          map.set(nums[i], i)
+        }
+        for (let i = 0; i < nums.length; i++) {
+          let diff = target - nums[i]
+          if (map.has(diff) && map.get(diff) != i) {
+            // 这里不仅要保证有该数，而且不能与 i 下标相等
+            return [i, map.get(diff)]
+          }
+        }
+      }
+
+      let result = twoSum([2, 7, 11, 15], 9)
+
+      // /**
+      //  * @param {number[]} nums
+      //  * @return {number}
+      //  */
+      // var removeDuplicates = function (nums) {
+      //   const len = nums.length
+      //   let k = 2
+      //   if (len === k) {
+      //     return len
+      //   }
+
+      //   let m = k
+      //   let q = k
+
+      //   while (q < len) {
+      //     if (nums[m - k] === nums[q]) {
+      //       q++
+      //     } else {
+      //       nums[m + k + 1] = nums[q]
+      //     }
+      //   }
+
+      //   console.log(m, q)
+      // }
+
+      // removeDuplicates([1,1,1,2,2,3])
+
+      // console.log(result)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // "A man, a plan, a canal: Panama"  -> 先把非 单词去掉
+      var isPalindrome = function (s) {
+        let arr = s.toLocaleLowerCase().replace(/\w/g)
+        arr = arr.join('')
+        let start = 0,
+          end = s.length - 1
+
+        while (start < end) {
+          if (arr[start] !== arr[end]) {
+            return false
+          }
+          start++
+          end--
+        }
+
+        return true
+      }
+    </script>
+  </body>
+</html>
