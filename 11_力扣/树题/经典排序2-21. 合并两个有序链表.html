@@ -36,14 +36,14 @@
     如何确认边界？
       引入哑节点
 
-      1、首先创建一个 哨兵节点 newLinked ，
+      1、首先创建一个 哨兵节点 dummy ，
       2、用一个per 引用哨兵节点 并迭代它
       
    -->
     <script>
       var mergeTwoLists = function (l1, l2) {
-        let newLinked = new ListNode(-1)
-        let per = newLinked
+        let dummy = new ListNode(-1)
+        let per = dummy
         while (l1 && l2) {
           // 【1】L1 L2 都不为null
           if (l1.val <= l2.val) {
@@ -57,7 +57,7 @@
           per = per.next // 【4】循环一次while 则迭代一次
         }
         per.next = l1 === null ? l2 : l1 // 【5】若l1或者l2有一个为null则会退出循环，直接将per的next指向不为null的链表
-        return newLinked.next
+        return dummy.next
       }
     </script>
   </body>

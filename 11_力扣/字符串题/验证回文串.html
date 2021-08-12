@@ -10,7 +10,7 @@
     <script>
       // "A man, a plan, a canal: Panama"  -> 先把非 单词去掉
       var isPalindrome = function (s) {
-        let arr = s.toLocaleLowerCase().replace(/\w/g)
+        let arr = s.toLocaleLowerCase().replace(/\w/g, '')
         arr = arr.join('')
         let start = 0,
           end = s.length - 1

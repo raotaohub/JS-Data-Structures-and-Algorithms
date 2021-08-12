@@ -67,6 +67,41 @@
 
         return dummy
       }
+
+      // 1 --> 2 --> 3 --> 4 --> 5 --> null 原始状态
+      // 5 --> 4 --> 3 --> 2 --> 1 --> null 目标状态
+
+      // cur 表示当前遍历到的节点
+      // pre 表示当前节点的前一个，赋值会经历  null 1 2 3 4 5 ，最后它会指向 原链表的尾巴 【pre】注解
+      // temp 表示当前节点的下一个节点
+
+      // 反转要做的是 将当前遍历到的node的next指针指向上一个节点 cur.next = pre 因此pre第一次值必定为null
+
+      // 1 --> null                           temp =  2 --> 3 --> 4 --> 5 --> null    cur = temp
+      // cur   pre
+
+      // 2 --> 1 --> null                     temp =  3 --> 4 --> 5 --> null          cur = temp
+      // cur   pre
+
+      // 3 --> 2 --> 1 --> null               temp =  4 --> 5 --> null                cur = temp
+      // cur   pre
+
+      // 4 --> 3 --> 2 --> 1 --> null         temp =  5 --> null                      cur = temp
+      // cur   pre
+
+      // 5 --> 4 --> 3 --> 2 --> 1 --> null   temp =  null                            cur = temp
+      // cur   pre
+
+      // 为了抓住引用，因此cur 要被赋值为 cur.next 由于刚刚已经指向 pre 因此用临时变量temp，cur = temp
+
+      // cur = temp = 1
+      // cur = temp = 2
+      // cur = temp = 3
+      // cur = temp = 4
+      // cur = temp = 5
+      // cur = temp = null
+
+      // 最终 返回 pre 节点 是因为查看【pre】注解
     </script>
   </body>
 </html>

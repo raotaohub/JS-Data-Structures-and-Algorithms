@@ -1,75 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-<script>
-  var inorderTraversal1 = function (root) {
-    let result = []
-    function dfs(root) {
-      if (!root) {
-        return
+  <body>
+    <script>
+      var inorderTraversal1 = function (root) {
+        let result = []
+        function dfs(root) {
+          if (!root) {
+            return
+          }
+          root.left && dfs(root.left)
+          result.push(root.val)
+          root.right && dfs(root.right)
+        }
+        dfs(root)
+        return result
       }
-      root.left && dfs(root.left)
-      result.push(root.val)
-      root.right && dfs(root.right)
-    }
-    dfs(root)
-    return result
-  };
 
-  // 模拟栈
-  var inorderTraversal2 = function (root) {
-    let stack = []
-    let result = []
+      // 模拟栈
+      var inorderTraversal2 = function (root) {
+        let stack = []
+        let result = []
 
-    // 重复 1 2 3 的步骤
-    while (root || stack.length) {
-
-      while (root) {
-        stack.push(root)        // 1. 先将所有左节点推入栈
-        root = root.left        // 并迭代左节点直到为空
+        // 重复 1 2 3 的步骤
+        while (root || stack.length) {
+          while (root) {
+            stack.push(root) // 1. 先将所有左节点推入栈
+            root = root.left // 并迭代左节点直到为空
+          }
+          root = stack.pop() // 2. 再访问根节点
+          result.push(root.val) // 加入结果
+          root = root.right // 3. 将指针指向右子树
+        }
+        return result
       }
-      root = stack.pop()        // 2. 再访问根节点
-      result.push(root.val)     // 加入结果
-      root = root.right         // 3. 将指针指向右子树
-    }
-    return result
-  };
 
-  var inorderTraversal3 = function (root) {
-    if (!root) {
-      return []
-    }
-    let stack = []
-    let result = []
-    let left = root.left
-    let right
-    let item = null
-    // 1. 将左子节点全部压入栈
-    while (left) {
-      stack.push(left)
-      left = left.left
-    }
-    // 2.
-    while (stack.length) {
-      item = stack.pop()
-      result.push(item.val)
-      right = item.right
-      while (right) {
-        stack.push(right)
-        right = right.right
+      const inOrderTraverse = root => {
+        let l = root.left
+        let r = null
+        let stack = [],
+          res = []
+
+        while (l) {
+          stack.push(l)
+          l = l.left
+        }
+
+        while (stack.length) {
+          root = stack.pop()
+          res.push(root.val)
+          r = root.right
+
+          while (right) {
+            res.push(right)
+            r = r.right
+          }
+        }
+
+        return res
       }
-    }
-    return result
-  }
-</script>
-
-</body>
-
+    </script>
+  </body>
 </html>

@@ -1,13 +1,13 @@
-function defaultCompare(a, b) {
+export function defaultCompare(a, b) {
   if (a === b) {
-    return Compare.EQUALS;                                // 相等 返回 0
+    return Compare.EQUALS // 相等 返回 0
   }
-  return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN; // 小于返回 -1 大于返回1
+  return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN // 小于返回 -1 大于返回1
 }
 const Compare = {
   LESS_THAN: -1,
   BIGGER_THAN: 1,
-  EQUALS: 0
+  EQUALS: 0,
 }
 class Node {
   constructor(key) {
@@ -28,22 +28,25 @@ class Node {
 */
 class BinarySearchTree {
   constructor(compareFn = defaultCompare) {
-    this.compareFn = compareFn  // 用于比较 以判断时放入左右哪边
-    this.root = null            // 根节点 仅有一个
+    this.compareFn = compareFn // 用于比较 以判断时放入左右哪边
+    this.root = null // 根节点 仅有一个
   }
   insertNode(node, key) {
-    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {  // 1.  key小于node.key 放到node的左侧
-      if (node.left == null) {                                  // 1.2 如果左侧是null 就地插入
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      // 1.  key小于node.key 放到node的左侧
+      if (node.left == null) {
+        // 1.2 如果左侧是null 就地插入
         node.left = new Node(key)
       } else {
-        this.insertNode(node.left, key)                          // 1.3 如不为null利用递归，再一次判断key放到该节点左侧还是右侧
+        this.insertNode(node.left, key) // 1.3 如不为null利用递归，再一次判断key放到该节点左侧还是右侧
       }
-    }
-    else {                                                      // 2.  key大于node.key 放到node的右侧
-      if (node.right == null) {                                 // 2.2 如果右侧是null 就地插入
+    } else {
+      // 2.  key大于node.key 放到node的右侧
+      if (node.right == null) {
+        // 2.2 如果右侧是null 就地插入
         node.right = new Node(key)
       } else {
-        this.insertNode(node.right, key)                        // 2.3 如不为null利用递归，再一次判断key放到该节点左侧还是右侧
+        this.insertNode(node.right, key) // 2.3 如不为null利用递归，再一次判断key放到该节点左侧还是右侧
       }
     }
   }
@@ -59,11 +62,12 @@ class BinarySearchTree {
     return this.searchNode(this.root, key)
   }
   searchNode(node, key) {
-    if (node == null) { return false }
+    if (node == null) {
+      return false
+    }
 
     if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
       return this.searchNode(node.left, key)
-
     } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
       return this.searchNode(node.right, key)
     } else {
@@ -137,28 +141,33 @@ class BinarySearchTree {
     if (this.root == null) {
       return null
     }
-    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {                      // 传入比较函数，判断key值在左侧
-      node.left = this.removeNode(node.left, key)//？？？。。
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      // 传入比较函数，判断key值在左侧
+      node.left = this.removeNode(node.left, key) //？？？。。
       return node
-    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {             // 传入比较函数，判断key值在右侧
-      node.right = this.removeNode(node.right, key)//？？？。。
+    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+      // 传入比较函数，判断key值在右侧
+      node.right = this.removeNode(node.right, key) //？？？。。
       return node
-    } else {                                                                        // 进入这一步说明 node == key 已经找到了
+    } else {
+      // 进入这一步说明 node == key 已经找到了
       if (node.left == null && node.left == null) {
-        node = null                                                   // 1 如果该节点没有 左右的子节点 直接将节点null
+        node = null // 1 如果该节点没有 左右的子节点 直接将节点null
         return node
       }
-      if (node.left == null) {                                        // 2.1 如果左节点是空的 将右节点赋值给node
+      if (node.left == null) {
+        // 2.1 如果左节点是空的 将右节点赋值给node
         node = node.right
         return node
-      } else if (node.right == null) {                                // 2.2 如果右节点是空的 将左节点赋值给node
+      } else if (node.right == null) {
+        // 2.2 如果右节点是空的 将左节点赋值给node
         node = node.left
         return node
-      }                                                               // 3 若该节点有左右子节点
-      const aux = this.minNode(node.right)                            //   找到该节点右侧子树的最小节点
-      node.key = aux.key                                              //   移除该节点，替换为原右侧子树的最小节点      
-      node.right = this.removeNode(node.right, aux.key)               //   移除该节点（原右侧子树的最小节点）？？？。。
-      return node                                                     //   向父节点返回更新后节点的引用 ？？？。。
+      } // 3 若该节点有左右子节点
+      const aux = this.minNode(node.right) //   找到该节点右侧子树的最小节点
+      node.key = aux.key //   移除该节点，替换为原右侧子树的最小节点
+      node.right = this.removeNode(node.right, aux.key) //   移除该节点（原右侧子树的最小节点）？？？。。
+      return node //   向父节点返回更新后节点的引用 ？？？。。
     }
   }
   remove(key) {
@@ -188,16 +197,25 @@ console.log(tree)
 
 const printNode = value => console.log(value)
 tree.inOrderTraverse(printNode)
-console.log('————————————————————————————————————————先序遍历————————————————————————————————————————')
+console.log(
+  '————————————————————————————————————————先序遍历————————————————————————————————————————'
+)
 tree.preOrderTraverse(printNode)
 
-console.log('——————————————————————————————————————————查找——————————————————————————————————————————')
+console.log(
+  '——————————————————————————————————————————查找——————————————————————————————————————————'
+)
 console.log(tree.search(1) ? 'key 1 found' : 'key 1 not found')
 console.log(tree.search(25) ? 'key 25 found' : 'key 25 not found')
-console.log('——————————————————————————————————————————移除——————————————————————————————————————————')
+console.log(
+  '——————————————————————————————————————————移除——————————————————————————————————————————'
+)
 tree.remove(6)
 tree.remove(5)
 tree.remove(15)
 console.log(tree)
-console.log('——————————————————————————————————————————迭代中序——————————————————————————————————————————')
+console.log(
+  '——————————————————————————————————————————迭代中序——————————————————————————————————————————'
+)
 
+export default BinarySearchTree
