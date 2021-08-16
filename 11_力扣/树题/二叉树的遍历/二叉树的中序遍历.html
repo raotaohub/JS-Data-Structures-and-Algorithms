@@ -22,16 +22,15 @@
         return result
       }
 
-      // 模拟栈
+      // 中序模拟栈
       var inorderTraversal2 = function (root) {
         let stack = []
         let result = []
 
-        // 重复 1 2 3 的步骤
         while (root || stack.length) {
           while (root) {
-            stack.push(root) // 1. 先将所有左节点推入栈
-            root = root.left // 并迭代左节点直到为空
+            stack.push(root) // 1. 所有左节点推入栈
+            root = root.left // 迭代左节点直到为空
           }
           root = stack.pop() // 2. 再访问根节点
           result.push(root.val) // 加入结果

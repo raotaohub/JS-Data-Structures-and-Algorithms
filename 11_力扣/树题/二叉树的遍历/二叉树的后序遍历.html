@@ -71,11 +71,11 @@
           }
 
           root = stack.pop()
-
+          // ##
           if (!root.right || root.right === pre) {
             res.push(root.val)
             pre = root
-            root = null
+            root = null // #防止下次while再次访问
           } else {
             stack.push(root)
             root = root.right

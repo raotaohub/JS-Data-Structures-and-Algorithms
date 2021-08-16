@@ -1,64 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  <!-- 
-    方式一：中序遍历
+  <body>
+    <!-- 
+    方式一：中序遍历 + 数组验证
     然后再次遍历是否存在 前一个大于后一个的情况
    -->
-  <script>
-    var isValidBST = function (root) {
-      if (!root) return true
-      let result = []
-      // 中序遍历
-      function dfs(root) {
-        if (!root) { return }
-        if (root.left) { dfs(root.left) }
-        if (root) { result.push(root.val) }
-        if (root.right) { dfs(root.right) }
-      }
-      dfs(root)
-
-      console.log(result)
-      for (let i = 0; i < result.length - 1; i++) {
-        if (result[i] >= result[i + 1]) {
-          return false
+    <script>
+      //
+      var isValidBST = function (root) {
+        if (!root) return true
+        let result = []
+        // 中序遍历
+        function dfs(root) {
+          if (!root) {
+            return
+          }
+          root.left && dfs(root.left)
+          result.push(root.val)
+          root.right && dfs(root.right)
         }
+        dfs(root)
+
+        for (let i = 0; i < result.length - 1; i++) {
+          if (result[i] >= result[i + 1]) {
+            return false
+          }
+        }
+        return true
       }
-      return true
-    }
-  </script>
-  <!-- 
-    方式二: DFS 在递归中判断 这个方式有待考究
-   -->
-  <script>
-    // var isValidBST = function (root) {
+      // 方式二：dfs迭代 + 访问的时候判断 当前节点节点是否小于等于上一个节点
+      var isValidBST = function (root) {
+        let stack = [],
+          pre = null
 
-    //   function dfs(root) {
-    //     if (!root) return true
+        while (root || stack.length) {
+          while (root) {
+            stack.push(root)
+            root = root.left
+          }
 
-    //     if (root.left) {
-    //       if (root.left.val >= root.val) return false
-    //     }
+          root = stack.pop()
+          if (pre && root.val <= pre.val) {
+            return false
+          }
+          pre = root
+          root = root.right
+        }
+        return true
+      }
 
-    //     if (root.right) {
-    //       if (root.right.val <= root.val) return false
+      // 递归一 ： 在递归中判断
+      var isValidBST = function (root) {
+        if (!root) return true
 
-    //     }
+        function valid(root, min = -Infinity, max = Infinity) {
+          if (!root) return true
+          const val = root.val
+          if (val <= min) return false
+          if (val >= max) return false
+          return valid(root.left, min, val) && valid(root.right, val, max)
+        }
+        return valid(root)
+      }
 
-    //     return dfs(root.left) && dfs(root.right)
-    //   }
+      // 递归二 ： 在递归中判断
+      var isValidBST = function (root) {
+        let pre = null
+        // 返回的是 boolean
+        const inOrder = root => {
+          if (!root) return true
+          let left = inOrder(root.left) // => boolean
 
-    //   return dfs(root)
-    // }
+          if (pre !== null && pre.val >= root.val) return false
+          pre = root
 
-  </script>
-</body>
+          let right = inOrder(root.right) // => boolean
 
+          return left && right // => boolean
+        }
+        return inOrder(root)
+      }
+    </script>
+  </body>
 </html>
