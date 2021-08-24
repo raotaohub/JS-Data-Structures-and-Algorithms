@@ -1,21 +1,3 @@
-/* 
-示例：
-二叉树：[3,9,20,null,null,15,7],
-
-    3
-   / \
-  9  20
-    /  \
-   15   7
-返回其层序遍历结果：
-
-[
-  [3],
-  [9,20],
-  [15,7]
-]
-*/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -24,30 +6,34 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
-
 /**
  * @param {TreeNode} root
- * @return {number[][]}
+ * @return {number}
  */
-var levelOrder = function (root) {
-  if (!root) return [];
-  let queue = [root],
-    res = [];
+var minDepth = function (root) {
+  if (!root) return 0;
+
+  let queue = [root];
+  let minDepth = 1;
+  const res = [];
 
   while (queue.length) {
     let j = queue.length;
-    let temp = []; // 每一层用一个 数组表示
+    let floor = [];
     while (j--) {
       root = queue.shift();
-      temp.push(root.val);
-
+      floor.push(root.val);
+      /*-------与最大深度相比只是多了一个提前返回的判断-------*/
+      if (!root.left && !root.right) {
+        return minDepth;
+      }
+      /*------------------------------------------------*/
       root.left && queue.push(root.left);
       root.right && queue.push(root.right);
     }
-    if (temp.length) {
-      res.push(temp);
-    }
+    res.push(floor);
+    minDepth++;
   }
-
-  return res;
+  console.log(res);
+  return minDepth;
 };
