@@ -37,7 +37,8 @@ class Stack {
     return this.items.size() === 0
   }
   // clear():          移除栈里所有元素
-  clear() {que
+  clear() {
+    que
     if (this.items.isEmpty()) {
       return undefined
     }

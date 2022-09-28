@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>4. 寻找两个正序数组的中位数</title>
+  <meta charset="UTF-8">
+  <title>4. 寻找两个正序数组的中位数</title>
 </head>
+
 <body>
-<script>
-  var findMedianSortedArrays = function (nums1, nums2) {
-    let len = nums1.length + nums2.length
-    let result = [...nums1, ...nums2].sort((a, b) => a - b)
+  <script>
+    var findMedianSortedArrays = function (nums1, nums2) {
+      let len = nums1.length + nums2.length
+      let result = [...nums1, ...nums2].sort((a, b) => a - b)
 
-    if ((len) === 0) {
-      return 0
-    }
-    if ((len) === 1) {
+      if ((len) === 0) {
+        return 0
+      }
+      if ((len) === 1) {
 
-      return typeof nums1[0] === 'number' ? nums1[0] : nums2[0]
-    }
+        return typeof nums1[0] === 'number' ? nums1[0] : nums2[0]
+      }
 
-    if ((len) % 2 === 0) {
+      if ((len) % 2 === 0) {
 
-      return (result.slice((len) / 2 - 1, (len) / 2 + 1).reduce((a, b) => a + b)) / 2
-    }
+        return (result.slice((len) / 2 - 1, (len) / 2 + 1).reduce((a, b) => a + b)) / 2
+      }
 
-    if ((len) % 2 !== 0) {
-      return result[(len - 1) / 2]
-    }
-  };
-</script>
+      if ((len) % 2 !== 0) {
+        return result[(len - 1) / 2]
+      }
+    };
+  </script>
 
 </body>
+
 </html>

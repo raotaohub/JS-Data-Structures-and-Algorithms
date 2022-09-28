@@ -11,55 +11,55 @@
 </head>
 
 <body>
-<script>
-    function reverseString(str) {
+    <script>
+        function reverseString(str) {
 
-        let a = str.split('').reverse()
+            let a = str.split('').reverse()
 
-        return a.join('')
-
-    }
-
-    reverseString("hello");
-    console.log(reverseString("hello"))
-
-    function reverseString(str) {
-        if (!str) {
-            return null
-        }
-        let len = Math.floor(str.length / 2)
-        for (let i = 0, j = str.length - 1; i < j; i++, j--) {
+            return a.join('')
 
         }
-    }
 
-    // console.log('-------------------------------------------------------------------------')
-    // console.log(1 + '1') // 11
-    // console.log(true + 0) // 1
-    // console.log({} + []) // [object Object]
-    // console.log(4 + {}) // 4[object Object]
-    // console.log(4 + [1]) // 41
-    // console.log('a' + 'b') // ab
-    // console.log([] == 0) // true
-    // console.log(![] == 0) // true
-    // console.log([] == ![]) // true
-    // console.log([] == []) //false
-    // console.log({} == !{}) //false
-    // console.log({} == {}) //false
+        reverseString("hello");
+        console.log(reverseString("hello"))
 
-    let a = 1
+        function reverseString(str) {
+            if (!str) {
+                return null
+            }
+            let len = Math.floor(str.length / 2)
+            for (let i = 0, j = str.length - 1; i < j; i++, j--) {
 
-    function aa() {
-        console.log(a) //输出1
-    }
+            }
+        }
 
-    function bb() {
-        let a = 2
-        aa()
-    }
+        // console.log('-------------------------------------------------------------------------')
+        // console.log(1 + '1') // 11
+        // console.log(true + 0) // 1
+        // console.log({} + []) // [object Object]
+        // console.log(4 + {}) // 4[object Object]
+        // console.log(4 + [1]) // 41
+        // console.log('a' + 'b') // ab
+        // console.log([] == 0) // true
+        // console.log(![] == 0) // true
+        // console.log([] == ![]) // true
+        // console.log([] == []) //false
+        // console.log({} == !{}) //false
+        // console.log({} == {}) //false
 
-    bb() // 输出 a
-</script>
+        let a = 1
+
+        function aa() {
+            console.log(a) //输出1
+        }
+
+        function bb() {
+            let a = 2
+            aa()
+        }
+
+        bb() // 输出 a
+    </script>
 </body>
 
 </html>

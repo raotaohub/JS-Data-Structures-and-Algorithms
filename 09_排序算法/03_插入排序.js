@@ -19,7 +19,7 @@ function swap(array, a, b) {
  *
  */
 function insertionSort(array, compareFn = defaultCompare) {
-  const {length} = array; // {1}
+  const { length } = array; // {1}
   let temp;
   for (let i = 1; i < length; i++) { // {2}
     let j = i; // {3}

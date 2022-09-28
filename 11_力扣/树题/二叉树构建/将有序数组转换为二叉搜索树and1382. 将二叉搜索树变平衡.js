@@ -20,6 +20,9 @@
  */
 
 /**
+ * @description 递归点 ① 一棵树的节点 是 数组中间的那个元素
+ *                    ② 树的左节点 是
+ *                    ③
  * @param {number[]} nums
  * @return {TreeNode}
  */

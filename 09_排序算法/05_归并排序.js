@@ -30,7 +30,7 @@ function merge(left, right, compareFn) {
   }
   return result.concat(i < left.length ? left.slice(i) : right.slice(j));
 }
-let arr = Array.of(8, 7,12,432,6,3,2,3,6,87,65,0,3,123,35,326,6,3)
+let arr = Array.of(8, 7, 12, 432, 6, 3, 2, 3, 6, 87, 65, 0, 3, 123, 35, 326, 6, 3)
 let result = mergeSort(arr)
 console.log(result)
 

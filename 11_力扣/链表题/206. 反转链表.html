@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <!-- 反转一个单链表。
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<!-- 反转一个单链表。
 
 示例:
 
@@ -22,51 +23,51 @@
   
 -->
 
-  <body>
-    <script>
-      var reverseList = function (head) {
-        let cur = head
-        let per = null
+<body>
+  <script>
+    var reverseList = function (head) {
+      let cur = head
+      let per = null
 
-        while (cur != null) {
-          // cur 是当前节点。
+      while (cur != null) {
+        // cur 是当前节点。
 
-          let nextTemp = cur.next // 这是当前节点的下一个
+        let nextTemp = cur.next // 这是当前节点的下一个
 
-          cur.next = per // 当前节点的下一个 指向前一个
-          /*以上处理反转，以下处理保存指针*/
-          per = cur // 成为下一轮循环时当前节点的前一个
+        cur.next = per // 当前节点的下一个 指向前一个
+        /*以上处理反转，以下处理保存指针*/
+        per = cur // 成为下一轮循环时当前节点的前一个
 
-          cur = nextTemp // 成为下一轮循环时当前节点(这里用temp提前保存了)
-        }
-        return per
+        cur = nextTemp // 成为下一轮循环时当前节点(这里用temp提前保存了)
+      }
+      return per
+    }
+
+    // 利用栈
+
+    function reverseList(head) {
+      let stack = []
+
+      while (head) {
+        stack.push(head)
+        head = head.next
       }
 
-      // 利用栈
-
-      function reverseList(head) {
-        let stack = []
-
-        while (head) {
-          stack.push(head)
-          head = head.next
-        }
-
-        if (stack.length === 0) {
-          return null
-        }
-
-        let dummy = stack.pop() // 最后一个作为头 ，用一个变量 dummy 牵住
-        let node = dummy // 这个假头 用来遍历
-        while (stack.length) {
-          let temp = stack.pop() //每次遍历再取 1 个出来
-          node.next = temp //  赋值给 【假头】的下一个
-          node = node.next //【假头】指向下１个节点
-        }
-        node.next = null
-
-        return dummy
+      if (stack.length === 0) {
+        return null
       }
+
+      let dummy = stack.pop() // 最后一个作为头 ，用一个变量 dummy 牵住
+      let node = dummy // 这个假头 用来遍历
+      while (stack.length) {
+        let temp = stack.pop() //每次遍历再取 1 个出来
+        node.next = temp //  赋值给 【假头】的下一个
+        node = node.next //【假头】指向下１个节点
+      }
+      node.next = null
+
+      return dummy
+    }
 
       // 1 --> 2 --> 3 --> 4 --> 5 --> null 原始状态
       // 5 --> 4 --> 3 --> 2 --> 1 --> null 目标状态
@@ -102,6 +103,7 @@
       // cur = temp = null
 
       // 最终 返回 pre 节点 是因为查看【pre】注解
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

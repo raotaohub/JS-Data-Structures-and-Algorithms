@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>226. 翻转二叉树</title>
@@ -7,38 +8,39 @@
 
 <body>
 
-<script>
+    <script>
 
-    const invertTree = function (root) {
-        if (!root) {
-            return root
-        }
-        [root.left, root.right] = [root.right, root.left]   //  前序遍历交换
-        invertTree(root.right)
-        invertTree(root.left)
-
-        // [root.left, root.right] = [root.right, root.left]    //  后序遍历交换
-    }
-
-    //BFS 遍历法
-    const invertTree = function (root) {
-        if (!root) {                // 判断边界
-            return root
-        }
-        let queue = [root]          // 加入队列
-
-        while (queue.length) {
-            let j = queue.length
-            while (j--) {
-                let node = queue.shift();   // 取出当前节点
-                [node.left, node.right] = [node.right, node.left] // ES6交换
-                node.left && queue.push(node.left)      // 将左右节点入列
-                node.right && queue.push(node.right)
+        const invertTree = function (root) {
+            if (!root) {
+                return root
             }
+            [root.left, root.right] = [root.right, root.left]   //  前序遍历交换
+            invertTree(root.right)
+            invertTree(root.left)
+
+            // [root.left, root.right] = [root.right, root.left]    //  后序遍历交换
         }
-        return root
-    }
-</script>
+
+        //BFS 遍历法
+        const invertTree = function (root) {
+            if (!root) {                // 判断边界
+                return root
+            }
+            let queue = [root]          // 加入队列
+
+            while (queue.length) {
+                let j = queue.length
+                while (j--) {
+                    let node = queue.shift();   // 取出当前节点
+                    [node.left, node.right] = [node.right, node.left] // ES6交换
+                    node.left && queue.push(node.left)      // 将左右节点入列
+                    node.right && queue.push(node.right)
+                }
+            }
+            return root
+        }
+    </script>
 
 </body>
+
 </html>

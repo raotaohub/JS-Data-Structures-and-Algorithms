@@ -34,7 +34,7 @@ class BSTTree {
   }
 
   insertNode(node, key) {
-    // 判断大小 看是要插入左侧还是右侧
+    // 判断大小 看是要插入左侧还是右侧; key 大于node.key 放在右边
     if (this.compare(node.key, key) == Compare.LESS_THAN) {
 
       if (node.right === null) {
@@ -179,6 +179,7 @@ tree.insert(14)
 tree.insert(20)
 tree.insert(18)
 tree.insert(25)
+tree.insert(6)
 tree.insert(6)
 
 console.log(tree)

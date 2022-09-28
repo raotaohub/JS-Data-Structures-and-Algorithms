@@ -1,120 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>二叉树的后序遍历</title>
-  </head>
-  <body>
-    <div>https://leetcode-cn.com/problems/binary-tree-postorder-traversal/</div>
-    <script>
-      // 递归法
-      // 0
-      var postorderTraversal = function (root) {
-        let result = []
-        function bfs(root) {
-          if (!root) {
-            return
-          }
-          root.left && bfs(root.left)
-          root.right && bfs(root.right)
-          result.push(root.val)
+
+<head>
+  <meta charset="UTF-8" />
+  <title>二叉树的后序遍历</title>
+</head>
+
+<body>
+  <div>https://leetcode-cn.com/problems/binary-tree-postorder-traversal/</div>
+  <script>
+    // 递归法
+    // 0
+    var postorderTraversal = function (root) {
+      let result = []
+      function bfs(root) {
+        if (!root) {
+          return
         }
-        bfs(root)
-        return result
+        root.left && bfs(root.left)
+        root.right && bfs(root.right)
+        result.push(root.val)
       }
-      // 1
-      // 迭代法 拟操作前序遍历 stack xxxxxxxxxxxxxxxxxxx
-      var postorderTraversal = function (root) {
-        const stack = root ? [root] : []
-        const result = []
-        while (stack.length) {
-          const node = stack.pop() // 1. 弹出栈顶元素
+      bfs(root)
+      return result
+    }
+    // 1
+    // 迭代法 拟操作前序遍历 stack xxxxxxxxxxxxxxxxxxx
+    var postorderTraversal = function (root) {
+      const stack = root ? [root] : []
+      const result = []
+      while (stack.length) {
+        const node = stack.pop() // 1. 弹出栈顶元素
 
-          result.unshift(node.val) // 2. 逆前序遍历操作 使用 unshift 倒叙法
+        result.unshift(node.val) // 2. 逆前序遍历操作 使用 unshift 倒叙法
 
-          node.left && stack.push(node.left) // 3. 先访问左节点
+        node.left && stack.push(node.left) // 3. 先访问左节点
 
-          node.right && stack.push(node.right) // 4. 再访问右节点
-        }
-        return result
+        node.right && stack.push(node.right) // 4. 再访问右节点
       }
+      return result
+    }
 
-      // 2
-      var postorderTraversal = function (root) {
-        let stack = root ? [root] : []
-        let result = []
+    // 2
+    var postorderTraversal = function (root) {
+      let stack = root ? [root] : []
+      let result = []
 
-        while (stack.length) {
-          let node = stack.pop()
-          if (node.left === null || node.right === null) {
-            result.push(node.val)
-          } else {
-            if (node.right) {
-              stack.push(node.right)
-            }
-            if (node.left) {
-              stack.push(node.left)
-            }
+      while (stack.length) {
+        let node = stack.pop()
+        if (node.left === null || node.right === null) {
+          result.push(node.val)
+        } else {
+          if (node.right) {
+            stack.push(node.right)
           }
-        }
-        return result
-      }
-      var postorderTraversal = root => {
-        let stack = []
-        let res = [],
-          pre = null
-
-        while (root || stack.length) {
-          while (root) {
-            stack.push(root)
-            root = root.left
-          }
-
-          root = stack.pop()
-          // ##
-          if (!root.right || root.right === pre) {
-            res.push(root.val)
-            pre = root
-            root = null // #防止下次while再次访问
-          } else {
-            stack.push(root)
-            root = root.right
+          if (node.left) {
+            stack.push(node.left)
           }
         }
+      }
+      return result
+    }
+    var postorderTraversal = root => {
+      let stack = []
+      let res = [],
+        pre = null
 
-        return res
-      }
-      // 4
-      const postorderTraversal = root => {
-        const res = [] // 结果数组
-        const stack = [] // 实体栈
-        let pre = null // 刚遍历的节点指针
-        while (root || stack.length) {
-          // 将根节点压入栈，并对左侧节点执行相同的操作
-          while (root) {
-            stack.push(root)
-            root = root.left
-          }
-          // 左侧节点操作完了，取出最后一个压入的节点
-          // 这里直接使用 root 指针也是可以的，新建了一个 node 变量，便于区分理解
-          const node = stack.pop()
-          // 该节点没有右子节点，或者，这个节点的右子节点，我们刚才已经加入结果了
-          if (!node.right || node.right === pre) {
-            // 将节点值存入结果
-            res.push(node.val)
-            // 标记刚遍历的节点
-            pre = node
-            // 根节点指针指向空，下一次循环时，无需压栈操作，直接弹出
-            root = null
-          } else {
-            // 该节点有右子节点，将节点压入栈
-            stack.push(node)
-            // 根节点指针指向右子节点，下一步以这个节点为根，进行遍历
-            root = node.right
-          }
+      while (root || stack.length) {
+        while (root) {
+          stack.push(root)
+          root = root.left
         }
-        return res
+
+        root = stack.pop()
+        // ##
+        if (!root.right || root.right === pre) {
+          res.push(root.val)
+          pre = root
+          root = null // #防止下次while再次访问
+        } else {
+          stack.push(root)
+          root = root.right
+        }
       }
-    </script>
-  </body>
+
+      return res
+    }
+    // 4
+    const postorderTraversal = root => {
+      const res = [] // 结果数组
+      const stack = [] // 实体栈
+      let pre = null // 刚遍历的节点指针
+      while (root || stack.length) {
+        // 将根节点压入栈，并对左侧节点执行相同的操作
+        while (root) {
+          stack.push(root)
+          root = root.left
+        }
+        // 左侧节点操作完了，取出最后一个压入的节点
+        // 这里直接使用 root 指针也是可以的，新建了一个 node 变量，便于区分理解
+        const node = stack.pop()
+        // 该节点没有右子节点，或者，这个节点的右子节点，我们刚才已经加入结果了
+        if (!node.right || node.right === pre) {
+          // 将节点值存入结果
+          res.push(node.val)
+          // 标记刚遍历的节点
+          pre = node
+          // 根节点指针指向空，下一次循环时，无需压栈操作，直接弹出
+          root = null
+        } else {
+          // 该节点有右子节点，将节点压入栈
+          stack.push(node)
+          // 根节点指针指向右子节点，下一步以这个节点为根，进行遍历
+          root = node.right
+        }
+      }
+      return res
+    }
+  </script>
+</body>
+
 </html>

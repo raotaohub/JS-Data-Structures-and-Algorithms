@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>二叉树的前序遍历</title>
-  </head>
-  <body>
-    <div>
-      https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/hard/145.binary-tree-postorder-traversal
-    </div>
-    <script>
-      // dfs 法
-      var preorderTraversal = function (root) {
-        let result = []
-        function dfs(root) {
-          if (!root) {
-            return
-          }
-          result.push(root.val)
-          root.left && dfs(root.left)
-          root.right && dfs(root.right)
+
+<head>
+  <meta charset="UTF-8" />
+  <title>二叉树的前序遍历</title>
+</head>
+
+<body>
+  <div>
+    https://leetcode-cn.com/problems/binary-tree-preorder-traversal/submissions/
+  </div>
+  <script>
+    // dfs 法
+    var preorderTraversal = function (root) {
+      let result = []
+      function dfs(root) {
+        if (!root) {
+          return
         }
-        dfs(root)
-        return result
+        result.push(root.val)
+        root.left && dfs(root.left)
+        root.right && dfs(root.right)
+      }
+      dfs(root)
+      return result
+    }
+
+    // 方法1
+    var preorderTraversal = function (root) {
+      // 1. 判断 root 是否存在 如果存在把他加入 stack
+      let stack = root ? [root] : []
+      let result = []
+      while (stack.length) {
+        const node = stack.pop() // 1.每次先取出 stack 最后的节点
+
+        result.push(node.val) // 2. 然后将该节点的值 加入结果
+
+        node.right && stack.push(node.right) // 3. 先访问 右节点
+
+        node.left && stack.push(node.left) // 4. 再访问 左节点
+      }
+      return result
+    }
+    // 方法2
+    var preorderTraversal = root => {
+      let res = []
+      let stack = []
+
+      while (root || stack.length) { //  ⭐推荐统一写成这种
+        res.push(root.val) // 访问
+
+        // --------------------入栈
+
+        root.right && stack.push(root.right)
+
+        root.left && stack.push(root.left)
+
+        // -------------------入栈
+
+        root = stack.pop() // 迭代
       }
 
-      var preorderTraversal = function (root) {
-        // 1. 判断 root 是否存在 如果存在把他加入 stack
-        let stack = root ? [root] : []
-        let result = []
-        while (stack.length) {
-          const node = stack.pop() // 1.每次先取出 stack 最后的节点
+      return res
+    }
+  </script>
+</body>
 
-          result.push(node.val) // 2. 然后将该节点的值 加入结果
-
-          node.right && stack.push(node.right) // 3. 先访问 右节点
-
-          node.left && stack.push(node.left) // 4. 再访问 左节点
-        }
-        return result
-      }
-      // 前序
-      var preorderTraversal = root => {
-        let res = []
-        let stack = []
-
-        while (root || stack.length) {
-          res.push(root.val) // 访问
-
-          // --------------------入栈
-
-          root.right && stack.push(root.right)
-
-          root.left && stack.push(root.left)
-
-          // -------------------入栈
-
-          root = stack.pop() // 迭代
-        }
-
-        return res
-      }
-    </script>
-  </body>
 </html>

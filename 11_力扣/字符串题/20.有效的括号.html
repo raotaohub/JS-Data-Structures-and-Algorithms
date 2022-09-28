@@ -38,30 +38,54 @@
 
  -->
 
-
 <body>
   <script>
     var isValid = function (s) {
       if (s.length === 0 || s.length % 2 !== 0) {
-        return false
+        return false;
       }
-      let stack = [], ele
+      let stack = [],
+        ele;
       for (let i = 0, length = s.length; i < length; i++) {
-        ele = s[i]
-        if (ele === '(') {
-          stack.push(')')
-        } else if (ele === '[') {
-          stack.push(']')
-        } else if (ele === '{') {
-          stack.push('}')
+        ele = s[i];
+        if (ele === "(") {
+          stack.push(")");
+        } else if (ele === "[") {
+          stack.push("]");
+        } else if (ele === "{") {
+          stack.push("}");
         } else if (stack.length === 0 || stack.pop() !== ele) {
-          return false
+          return false;
         }
       }
-      return stack.length == 0
+      return stack.length == 0;
     };
-  </script>
 
+    var isValid = function (s) {
+      if (s.length === 0 || s.length % 2 !== 0) return false;
+
+      const map = new Map();
+      map.set("{", "}");
+      map.set("[", "]");
+      map.set("(", ")");
+
+      const stack = [];
+
+      for (let i = 0; i < s.length; i++) {
+        if (map.has(s[i])) {
+          stack.push(map.get(s[i]));
+        } else {
+          const val = stack[stack.length - 1];
+
+          if (s[i] === val) stack.pop();
+          else return false;
+        }
+      }
+
+      return stack.length === 0;
+    };
+    console.log(isValid("{[]}"));
+  </script>
 </body>
 
 </html>

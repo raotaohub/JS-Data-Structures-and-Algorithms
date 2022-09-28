@@ -4,27 +4,28 @@
 
 在计算机科学中，树与现实的树结构是一样的，但是它是倒着的。
 
-​	二叉搜索树（BST）是树的一种，它有一个根节点，每个节点大于父节点的置于父节点的右侧，小于父节点的值的，存储在父节点的左侧。
+​ 二叉搜索树（BST）是树的一种，它有一个根节点，每个节点大于父节点的置于父节点的右侧，小于父节点的值的，存储在父节点的左侧。
+小于 root 在左边 ，大于 root 在右边。
 
 <img src="C:\Users\raota\AppData\Roaming\Typora\typora-user-images\image-20201129163448874.png" alt="、" style="zoom:50%;" />
 
 #### 2、创建一个二叉搜索树？
 
-- 需要一个 节点类 来表示BTS中的每个节点。
+- 需要一个 节点类 来表示 BTS 中的每个节点。
 
 - 需要一个 比较函数 来判断新的节点应处于什么位置
 
-- 需要一个 BTS类 来种一个树，且正确的处置每个节点
+- 需要一个 BTS 类 来种一个树，且正确的处置每个节点
 
 1. 创建节点类
 
    ```js
-   class Node{
-   	constructor(key){
-   	this.key = key
-   	this.left = null
-   	this.irght = null
-   	}
+   class Node {
+     constructor(key) {
+       this.key = key
+       this.left = null
+       this.irght = null
+     }
    }
    ```
 
@@ -36,13 +37,13 @@
    	a < b ? COMPARE.LESS : COMPARE.BIG
    }
    const COMPARE = {
-       BIG : 1, 
-       LESS : -1, 
+       BIG : 1,
+       LESS : -1,
        EQUALS : 0
    }
    ```
 
-3. 创建BTS类
+3. 创建 BTS 类
 
    ```js
    class BSTree{
@@ -54,9 +55,9 @@
    }
    ```
 
-#### 3、创建BST树最重要的方法 insert(key) 将一个值 插入到树中
+#### 3、创建 BST 树最重要的方法 insert(key) 将一个值 插入到树中
 
-- insert(key)  接着上面的 BSTree 类写
+- insert(key) 接着上面的 BSTree 类写
 
   ```js
   {
@@ -73,7 +74,7 @@
                  node.left = new Node(key)
                  }else{
                  this.insert(node.left,key)		//3.2若左侧有节点，则递归操作，重新找到合适的位置。
-              } 
+              }
           }else{													//4.反之在右侧插入
               if(node.right == null){
                   node.right = new Node(key)		//4.1
@@ -86,16 +87,16 @@
   }
   ```
 
-##### 在一棵树中，插入一个节点需要考虑2种情况
+##### 在一棵树中，插入一个节点需要考虑 2 种情况
 
 > 1. **树的 根节点为 null ， 将该 node 设为这棵树的根，**
-> 2. **树的 根节点不为 null ，又可以细分2种情况**
->    - 1）node 值小于 root 的值，在左侧插入；又可细分 2种情况
+> 2. **树的 根节点不为 null ，又可以细分 2 种情况**
+>    - 1）node 值小于 root 的值，在左侧插入；又可细分 2 种情况
 >      - 左侧没有值，将 node 设为左侧节点
->      - 左侧    有值，递归调用，继续找到树的下一层。 => 重复 第 2 情况
->    - 2）node 值大于 root的值，在右侧插入；又可细分 2种情况
+>      - 左侧 有值，递归调用，继续找到树的下一层。 => 重复 第 2 情况
+>    - 2）node 值大于 root 的值，在右侧插入；又可细分 2 种情况
 >      - 右侧没有值，将 node 设为右侧节点
->      - 右侧    有值，递归调用，继续找到树的下一层。=> 重复 第 2 情况
+>      - 右侧 有值，递归调用，继续找到树的下一层。=> 重复 第 2 情况
 
 这个过程，也像是一棵树。
 
@@ -104,7 +105,7 @@
 - 通常把调用和遍历分开，于是我们这样写
 
   ```js
-  {	
+  {
       //先序遍历
   	preOder(callback){
   		this.preOderNode(this.root,callback)
@@ -121,10 +122,8 @@
   }
   ```
 
-  
-
 - 三种方法的区别在哪里？
-  
+
   - 区别只在遍历**根节点**的顺序不同。
 
 1. 创建 **先序搜索**
@@ -220,13 +219,11 @@ console.log(index)
 console.log(pre)
 console.log(post)
 
-/**    Console  **/ 
+/**    Console  **/
 BSTTree {root: Node, compare: ƒ}
 BSTTree.js:144 (15) [3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 20, 25]
 BSTTree.js:145 (15) [11, 7, 5, 3, 6, 9, 8, 10, 15, 13, 12, 14, 20, 18, 25]
 BSTTree.js:146 (15) [3, 6, 5, 8, 10, 9, 7, 12, 14, 13, 18, 25, 20, 15, 11]
 ```
-
-
 
 学习数据结构和算法，应该在熟悉和了解，再谈掌握！希望大家学习进步！

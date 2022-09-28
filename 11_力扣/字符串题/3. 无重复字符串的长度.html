@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>3. 无重复字符串的长度</title>
+  <meta charset="UTF-8">
+  <title>3. 无重复字符串的长度</title>
 </head>
+
 <body>
-<!--
+  <!--
 示例 1:
 
 输入: s = "abcabcbb"
@@ -27,32 +29,33 @@
 输入: s = ""
 输出: 0
 -->
-<script>
-  // 滑动窗口法
-  // 思路：用一个数组保存遍历的字符
-  // 遍历字符的时候，先查看这个字符是否已经出现在数组中了，
-  //    1. 如果没有出现,就push到数组尾巴
-  //    2. 如果已经出现过,就要把数组里存储的字符都删了
-  //    3. 用一个max变量默认为0，用来保存长度较大的值
-  //    假设有 字符串 ‘abcab’ 那么数组会push到 ['a','b','c']
-  //    当遍历到 a 的时候，由于 a 已经出现过了，因此index = 0 , 执行splice(0,1) arr=['b','c','a']  max = 3
-  //    接着遍历 b 的时候，由于 b 也出现过了，  因此index = 0 , 执行splice(0,1) arr=['c','a','b']  max = 3
-  //    遍历结束 返回 max
-  var lengthOfLongestSubstring = function (s) {
-    let arr = []
-    let max = 0
+  <script>
+    // 滑动窗口法
+    // 思路：用一个数组保存遍历的字符
+    // 遍历字符的时候，先查看这个字符是否已经出现在数组中了，
+    //    1. 如果没有出现,就push到数组尾巴
+    //    2. 如果已经出现过,就要把数组里存储的字符都删了
+    //    3. 用一个max变量默认为0，用来保存长度较大的值
+    //    假设有 字符串 ‘abcab’ 那么数组会push到 ['a','b','c']
+    //    当遍历到 a 的时候，由于 a 已经出现过了，因此index = 0 , 执行splice(0,1) arr=['b','c','a']  max = 3
+    //    接着遍历 b 的时候，由于 b 也出现过了，  因此index = 0 , 执行splice(0,1) arr=['c','a','b']  max = 3
+    //    遍历结束 返回 max
+    var lengthOfLongestSubstring = function (s) {
+      let arr = []
+      let max = 0
 
-    for (let i = 0; i < s.length; i++) {
-      let index = arr.indexOf(s[i])
-      if (index != -1) {
-        arr.splice(0, index + 1)
+      for (let i = 0; i < s.length; i++) {
+        let index = arr.indexOf(s[i])
+        if (index != -1) {
+          arr.splice(0, index + 1)
+        }
+        arr.push(s[i])
+        max = Math.max(arr.length, max)
       }
-      arr.push(s[i])
-      max = Math.max(arr.length, max)
-    }
-    return max
-  };
-</script>
+      return max
+    };
+  </script>
 
 </body>
+
 </html>
