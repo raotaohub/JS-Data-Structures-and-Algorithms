@@ -18,19 +18,27 @@
             9  20
               /  \
             15   7
+    核心的思想是，只要直到root的值，就可以在中序遍历的结果，区分左右子树的构成。
+    恰好这里提供了前序遍历结果，也就得到了 root 的值。
+
+    通过递归重复这个构建过程 即可。
    -->
   <script>
     var buildTree = function (preorder, inorder) {
-      if (inorder <= 0) {
-        return null
-      }
-      let node = preorder[0]
-      let mid = inorder.indexOf(node)
-      let root = new TreeNode(node)
 
-      root.left = buildTree(preorder.slice(1, mid + 1), preorder.slice(mid + 1))
-      root.right = buildTree(preorder.slice(mid + 1),)
-    }
+      if (!preorder.length || !inorder.length) return null
+
+      const root = new TreeNode(preorder[0]) // 前序第1个元素 是root
+      const mid = inorder.indexOf(root.val) // 找到中序 root 的下标 
+
+
+      // 在前序数组中root的位置是确定的就是 index = 0 , 左子树结束的数组区间 就是 index = mid 的位置
+      root.left = buildTree(preorder.slice(1, mid + 1), inorder.slice(0, mid))
+      root.right = buildTree(preorder.slice(mid + 1,), inorder.slice(mid + 1))
+
+
+      return root
+    };
 
   </script>
 </body>

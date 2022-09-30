@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+        输入: 
+          5
+        /  \
+       3    6
+      / \  / \
+     2  4 8   
+    /    / \
+   1    7   9
+    输出: 6
+    方式一 ：dfs
+
+    输入：root = [5,3,6,2,4,null,8,1,null,null,null,7,9]
+    输出：[1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
+
+
+ -->
+<script>
+    // 方法一 哨兵节点 + 重新构建 
+    var increasingBST = function (root) {
+
+        const stack = [], res = []
+        while (root || stack.length) {
+            while (root) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            res.push(root)
+            root = root.right
+        }
+
+        const tree = new TreeNode(-1)
+        let dummy = tree
+        for (let i = 0; i < res.length; i++) {
+            dummy.left = null
+            dummy.right = new TreeNode(res[i].val)
+            dummy = dummy.right
+
+        }
+        return tree.right
+    };
+
+
+    // 方法2 原地构建 递归
+    var increasingBST = function (root) {
+
+        const head = new TreeNode(-1)
+        let dummy = head
+        function dfs(root) {
+            if (!root) return
+
+            dfs(root.left)
+
+            dummy.right = root
+            root.left = null // 这里比较特殊 ，无法理解
+            dummy = root
+
+            dfs(root.right)
+        }
+        dfs(root)
+
+        return head.right
+
+    };
+</script>
+
+<body>
+
+</body>
+
+</html>
