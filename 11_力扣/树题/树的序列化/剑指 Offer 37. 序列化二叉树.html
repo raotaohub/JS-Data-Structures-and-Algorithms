@@ -102,7 +102,7 @@
       let values = JSON.parse(data);
 
       return (function getTree() {
-        let value = values.shift();
+        let value = values.shift(); // 注意点是从第一个元素开始取
         if (value === null) return null;
 
         let node = new TreeNode(value); // 根
@@ -118,6 +118,46 @@
     // https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/solution/jsxu-lie-hua-yu-fan-xu-lie-hua-by-kian2020/
 
 
+
+  </script>
+
+  <script>
+    // DFS 后序
+    var serialize = function (root) {
+      let result = []
+
+      function dfs(root) {
+        if (!root) return result.push(null)
+        dfs(root.left)
+        dfs(root.right)
+
+        result.push(root.val)
+
+      }
+
+      dfs(root)
+
+      return JSON.stringify(result);
+    };
+    /**
+     * Decodes your encoded data to tree.
+     *
+     * @param {string} data
+     * @return {TreeNode}
+     */
+    var deserialize = function (data) {
+      let values = JSON.parse(data);
+      return (function getTree() {
+        let value = values.pop(); // 注意点是从最后一个元素开始取
+        if (value === null) return null;
+
+        let node = new TreeNode(value); // 根
+        node.right = getTree();         // 右 ！
+        node.left = getTree();          // 左 ！
+        return node;
+      })();
+
+    };
 
   </script>
 </head>

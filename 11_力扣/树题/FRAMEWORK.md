@@ -1,0 +1,126 @@
+# 大致思路
+
+1. dfs 前中后
+2. bfs 层 和 深度
+3. 构建类
+    序列化
+    中序配前后序构建
+4. 回溯类
+   > (112. 路径总和)[https://leetcode.cn/problems/path-sum/]
+   > (113. 路径总和 II)[https://leetcode.cn/problems/path-sum-ii/]
+
+## 熟悉递归分解问题
+
+```java
+/* 二叉树遍历框架 */
+void traverse(TreeNode root) {
+     if (root == null) return
+    // 前序遍历
+    traverse(root.left)
+    // 中序遍历
+    traverse(root.right)
+    // 后序遍历
+}
+
+```
+
+通过基本的方式来理解
+
+- 计算一棵二叉树共有几个节点
+
+```java
+// 定义：count(root) 返回以 root 为根的树有多少节点
+int maxCount(TreeNode root) {
+    // base case
+    if (root == null) return 0;
+    // 自己加上子树的节点数就是整棵树的节点数
+    return 1 + maxCount(root.left) + maxCount(root.right);
+}
+
+```
+
+- 二叉树最大深度
+
+返回左右子树最大的深度
+
+```java
+// 定义：count(root) 返回以 root 为根的树有多少节点
+int maxdepth(TreeNode root) {
+    // base case
+    if (root == null) return 0;
+    // 左树深度
+    int left = maxdepth(root.left)
+    //右树深度
+    int right = maxdepth(root.left)
+
+    return Math.max(left,right)+1
+}
+
+```
+
+### 后序操作
+
+- 二叉树的直径
+
+直径就是指子树最大深度的和
+
+```java
+// 记录最大直径的长度
+int maxDiameter = 0;
+
+public int diameterOfBinaryTree(TreeNode root) {
+    maxDepth(root);
+    return maxDiameter;
+}
+
+int maxDepth(TreeNode root) {
+    if (root == null) {
+        return 0;
+    }
+    int leftMax = maxDepth(root.left);
+    int rightMax = maxDepth(root.right);
+    // 后序位置，顺便计算最大直径
+    int myDiameter = leftMax + rightMax;
+    maxDiameter = Math.max(maxDiameter, myDiameter);
+
+    return 1 + Math.max(leftMax, rightMax);
+}
+
+```
+
+- 翻转二叉树
+
+```java
+// 将整棵树的节点翻转
+TreeNode invertTree(TreeNode root) {
+    // base case
+    if (root == null) {
+        return null;
+    }
+
+    /**** 前序遍历位置 ****/
+    // root 节点需要交换它的左右子节点
+    TreeNode tmp = root.left;
+    root.left = root.right;
+    root.right = tmp;
+
+    // 让左右子节点继续翻转它们的子节点
+    invertTree(root.left);
+    invertTree(root.right);
+
+    return root;
+}
+
+```
+
+## 递归算法的关键要明确函数的定义
+
+相信这个定义，而不要跳进递归细节。
+
+##
+
+(labuladong)[https://www.bilibili.com/video/BV1nG411x77H/?vd_source=ad977f2996622120f46d207ea056d745]
+
+## 题解 ——> 小抄的文章
+
+## 思路 ——> 笔记的内容 PDF 里没有

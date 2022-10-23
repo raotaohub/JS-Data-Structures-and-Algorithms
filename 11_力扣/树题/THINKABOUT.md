@@ -19,7 +19,7 @@
 
 ![img](https://tva1.sinaimg.cn/large/007S8ZIlly1ghlui7vcmwg30dw0dw3yl.gif)
 
-2. BFS 广度优先 （借助队列的结构调用的）
+2. BFS 广度优先 层序遍历（一定是借助队列queue的结构，不论是构建或是遍历） 
 
 - 迭代 1 种
 
@@ -32,6 +32,30 @@
 
 - 递归 3 种
 - 迭代 3 种 （栈）
+
+#### think
+
+只要是递归操作，即压栈出栈，在执行顺序上就有 `前后`序 之分
+
+```javascript
+// tree
+function traverse(root) {
+  if (!root) return //...
+  // 前
+  traverse(root.left)
+  // 中
+  traverse(root.right)
+  // 后
+}
+//linked
+
+function traverse_linked(head) {
+  if (!head) return
+  // 前
+  traverse_linked(head.next)
+  // 后
+}
+```
 
 ```javascript
 // 前序
@@ -145,6 +169,7 @@ function bfs(root) {
   }
   return depah
 }
+
 //DFS法
 var maxDepth = function (root) {
   if (!root) return 0 // 终止条件
