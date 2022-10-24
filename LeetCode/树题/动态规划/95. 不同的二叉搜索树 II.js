@@ -9,41 +9,49 @@
  *  枚举所有可能的前提是 要先构建好一颗， 所以很容易想到要用 [后序遍历]
  */
 
-const memo = new Map()
-
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number} n
+ * @return {TreeNode[]}
+ */
 var generateTrees = function (n) {
-    if (n === 0) return null;
-    return helper(1, n);
+    if (n == 0) return [new TreeNode(null)]
+
+    return build(1, n)
 };
 
-const helper = (start, end) => {
-    let allTree = []
+const memo = new Map()
 
-    if (start > end) {// 二叉树 左边 不得大于 右边 因此要返回
-        allTree.push(null)
-        return allTree
+function build(start, end) {
+
+    let res = []
+    if (start > end) {
+        res.push(null)
+        return res
     }
 
     let key = JSON.stringify([start, end])
-    memo.has(key) && memo.get(key) && return memo.get(key)
+    if (memo.has(key) && memo.get(key)) return memo.get(key)
 
-    // 穷举 root 节点的所有可能。
     for (let i = start; i <= end; i++) {
-        // 递归构造子树的所有合法 BST
-        let leftTree = helper(start, i - 1);
-        let rightTree = helper(i + 1, end);
+        const left = build(start, i - 1)
+        const right = build(i + 1, end)
 
-        /* 后序操作*/
-        // 给 root 节点穷举所有左右子树的集合
-        for (let left of leftTree) {
-            for (let right of rightTree) {
-                allTree.push(new TreeNode(i, left, right));
+        for (let l of left) {
+            for (let r of right) {
+                res.push(new TreeNode(i, l, r))
             }
         }
 
-
     }
 
-    memo.set(key, allTree)
-    return allTree;
-};
+    memo.set(key, res)
+    return res
+}
