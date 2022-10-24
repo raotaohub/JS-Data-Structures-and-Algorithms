@@ -3,8 +3,8 @@
 1. dfs 前中后
 2. bfs 层 和 深度
 3. 构建类
-    序列化
-    中序配前后序构建
+   序列化
+   中序配前后序构建
 4. 回溯类
    > (112. 路径总和)[https://leetcode.cn/problems/path-sum/]
    > (113. 路径总和 II)[https://leetcode.cn/problems/path-sum-ii/]
@@ -42,6 +42,36 @@ int maxCount(TreeNode root) {
 - 二叉树最大深度
 
 返回左右子树最大的深度
+
+```java
+int res = 0;
+// 记录遍历到的节点的深度
+int depth = 0;
+// 主函数
+int maxDepth(TreeNode root) {
+  traverse(root);
+  return res;
+}
+
+// ⼆叉树遍历框架
+void traverse(TreeNode root) {
+  if (root == null) {
+    // 到达叶⼦节点，更新最⼤深度
+    res = Math.max(res, depth);
+    return;
+  }
+  // 前序位置
+  depth++;
+  traverse(root.left);
+  traverse(root.right);
+  // 后序位置
+  depth--;
+}
+
+```
+
+当然，你也很容易发现⼀棵⼆叉树的最⼤深度可以通过⼦树的最⼤⾼度推导出来，这就是分解问题计算答案
+的思路。
 
 ```java
 // 定义：count(root) 返回以 root 为根的树有多少节点
