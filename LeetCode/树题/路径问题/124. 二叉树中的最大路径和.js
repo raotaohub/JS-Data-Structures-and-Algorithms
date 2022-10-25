@@ -19,7 +19,8 @@ var maxPathSum = function (root) {
 
 
 `
-这题和直径很像 
+这题和直径很像
+求1棵树的最大直径，可以分解为求左子树和右子树的最大直径，取最大的即可。
 
 // 记录最大直径的长度
 int maxDiameter = 0;

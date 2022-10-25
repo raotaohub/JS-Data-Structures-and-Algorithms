@@ -8,8 +8,10 @@ var hasPathSum = function (root, targetSum) {
 
     if (!root.left && !root.right) return targetSum - root.val === 0
 
+    /* targetSum - root.val 隐藏着回溯 出栈的时候会回到上次状态 */
+
     return hasPathSum(root.left, targetSum - root.val) // 每次访问都要去缩小 targetSum 
-        || hasPathSum(root.right, targetSum - root.val)
+        || hasPathSum(root.right, targetSum - root.val) // 
 
 
 };
