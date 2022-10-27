@@ -65,7 +65,7 @@ var searchBST = function (root, key) {
     return root
 }
 
-// 抽象的看 增 和 删 都是从【查】的框架中演变的。
+// 抽象的看 增 和 删 都是从【DFS遍历】框架中演变的。
 // 增 和 删因为修改了节点，因此需要返回修改后的节点
 function BST(root, target) {
     if (!root) return // 
