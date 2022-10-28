@@ -1,5 +1,6 @@
 /* 大经典 */
 
+
 // dfs 分解成子问题；注意点是一定要判断 左右子树都为空
 // 112.
 var hasPathSum = function (root, targetSum) {

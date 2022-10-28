@@ -8,7 +8,8 @@ function getMax(root) {
     return root
 }
 
-// 删
+
+/*// 删 450. 删除二叉搜索树中的节点 */
 var deleteNode = function (root, key) {
     if (!root) return null
     if (root.val === key) {
@@ -33,7 +34,7 @@ var deleteNode = function (root, key) {
 
 }; 1
 
-// 增
+/*// 增 701. 二叉搜索树中的插入操作 */
 var insertNode = function (root, key) {
 
     if (!root) return new TreeNode(key)
@@ -49,7 +50,7 @@ var insertNode = function (root, key) {
     return root
 }
 
-// 查
+/*// 查 700. 二叉搜索树中的搜索 */
 var searchBST = function (root, key) {
 
     if (!root) return null
