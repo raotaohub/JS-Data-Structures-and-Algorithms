@@ -39,6 +39,8 @@
           1、 需要两个 head 的引用：一个为快，一个为慢
           2、 让 快指针先走 n 次
           3、 让 快指针和 慢指针 一起走，走到快指针的下一次 null
+
+    https://leetcode.cn/problems/remove-nth-node-from-end-of-list/submissions/
    -->
 
   <script>
@@ -71,6 +73,37 @@
       slow.next = slow.next.next
       return head
     };
+
+    // 通用方法
+    function findInLast(head, n) {
+
+      let fast = slow = head
+      while (n > 0) {
+        fast = fast.next
+        n--
+      }
+
+      while (fast) {
+        slow = slow.next
+        fast = fast.next
+      }
+      return slow
+    }
+
+    function removeNthFromEnd(head, n) {
+
+      if (n < 0) return
+
+      let dummy = new ListNode(-1)
+      dummy.next = head
+
+      let x = findInLast(dummy, n + 1)
+
+      x.next = x.next.next
+
+      return dummy.next
+    }
+
   </script>
 </body>
 

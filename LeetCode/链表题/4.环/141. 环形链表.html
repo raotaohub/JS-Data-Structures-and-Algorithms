@@ -26,9 +26,9 @@
     var hasCycle = (head) => {
       let map = new Map()
 
-      while (head) {
+      while (head) { // 如果不是环链表 会走到 null
         if (map.has(head)) {
-          return true
+          return true // 如果是环链表 会走到 true
         }
 
         map.set(head)
@@ -38,19 +38,7 @@
       return false
 
     }
-    /*    快慢指针一    */
-    var hasCycle = (head) => {
-      if (head == null || head.next == null) { return false }
-      let quick = head.next
-      let slow = head
-      while (quick != slow) {
-        if (quick == null || quick.next == null) { return false }
-        slow = slow.next
-        quick = quick.next.next
-      }
-      return true
 
-    }
     /*    快慢指针二    */
     // 快慢指针法
     var hasCycle = function (head) {
