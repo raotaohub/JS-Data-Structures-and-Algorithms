@@ -17,6 +17,7 @@
           若无，则将当前 node 加入到哈希表中
           然后迭代 node 
       3、 若链表是无环的，说明它会到 null 当退出循环的时候，就返回 null
+      4、 若是有环，肯定会再次遇到。便从map中取出并返回
 
       方式二 快慢指针
    -->
@@ -31,7 +32,7 @@
           return map.get(head)
         }
 
-        map.set(head)
+        map.set(head, head)
 
         head = head.next
       }
@@ -39,6 +40,9 @@
     }
 
     // 快慢指针法 1
+    /**
+     * 快慢指针法则，快指针走2步=2k ， 慢指针走1步= 1k 
+     */
     var detectCycle = function (head) {
 
       let quick = slow = head
@@ -56,26 +60,6 @@
         }
       }
       return false
-    }
-    // 快慢指针法 2
-    var detectCycle = function (head) {
-      let quick = slow = head
-
-      while (quick && quick.next) {
-        quick = quick.next.next
-        slow = slow.next
-
-        if (quick == slow) {
-          let temp = head
-          while (temp != slow) {
-            temp = temp.next
-            slow = slow.next
-          }
-          return temp
-        }
-
-      }
-      return null
     }
   </script>
 

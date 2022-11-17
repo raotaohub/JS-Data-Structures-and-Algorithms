@@ -41,6 +41,14 @@
       2、用一个per 引用哨兵节点 并迭代它
       
    -->
+
+  <!-- 
+    1. 根据题意，需要返回1个新链表，因此创建虚拟节点 dummy 和引用 p。
+
+    2. 交错地迭代 a 、b ，根据ab值的大小来决定 p.next 的指向，每次都迭代p自己
+
+    3. 由于 p 最初指向 dummy，但遍历结束时，最终返回 dummy.next 即可
+    -->
   <script>
     var mergeTwoLists = function (l1, l2) {
       let dummy = new ListNode(-1)

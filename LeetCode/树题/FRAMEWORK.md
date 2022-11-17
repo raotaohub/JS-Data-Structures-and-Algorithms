@@ -11,81 +11,77 @@
 
 ## 熟悉递归分解问题
 
-```java
+```js
 /* 二叉树遍历框架 */
-void traverse(TreeNode root) {
-     if (root == null) return
-    // 前序遍历
-    traverse(root.left)
-    // 中序遍历
-    traverse(root.right)
-    // 后序遍历
+function traverse(root) {
+  if (root == null) return
+  // 前序遍历
+  traverse(root.left)
+  // 中序遍历
+  traverse(root.right)
+  // 后序遍历
 }
-
 ```
 
 通过基本的方式来理解
 
 - 计算一棵二叉树共有几个节点
 
-```java
+```js
 // 定义：count(root) 返回以 root 为根的树有多少节点
-int maxCount(TreeNode root) {
-    // base case
-    if (root == null) return 0;
-    // 自己加上子树的节点数就是整棵树的节点数
-    return 1 + maxCount(root.left) + maxCount(root.right);
+function maxCount(root) {
+  // base case
+  if (root == null) return 0
+  // 自己加上子树的节点数就是整棵树的节点数
+  return 1 + maxCount(root.left) + maxCount(root.right)
 }
-
 ```
 
 - 二叉树最大深度
 
 返回左右子树最大的深度
 
-```java
-int res = 0;
+```js
+
+let res = 0;
 // 记录遍历到的节点的深度
-int depth = 0;
+let depth = 0;
 // 主函数
-int maxDepth(TreeNode root) {
-  traverse(root);
-  return res;
+function maxDepth(TreeNode root) {
+
+    // ⼆叉树遍历框架
+    function traverse(TreeNode root) {
+        if (root == null) {
+            // 到达叶⼦节点，更新最⼤深度
+            res = Math.max(res, depth);
+            return;
+        }
+        // 前序位置
+        depth++;
+        traverse(root.left);
+        traverse(root.right);
+        // 后序位置
+        depth--;
+    }
+    traverse(root);
+    return res;
 }
 
-// ⼆叉树遍历框架
-void traverse(TreeNode root) {
-  if (root == null) {
-    // 到达叶⼦节点，更新最⼤深度
-    res = Math.max(res, depth);
-    return;
-  }
-  // 前序位置
-  depth++;
-  traverse(root.left);
-  traverse(root.right);
-  // 后序位置
-  depth--;
-}
 
 ```
 
-当然，你也很容易发现⼀棵⼆叉树的最⼤深度可以通过⼦树的最⼤⾼度推导出来，这就是分解问题计算答案
-的思路。
+当然，你也很容易发现⼀棵⼆叉树的最⼤深度可以通过⼦树的最⼤⾼度推导出来，这就是分解问题计算答案的思路。
 
-```java
+```js
 // 定义：count(root) 返回以 root 为根的树有多少节点
-int maxdepth(TreeNode root) {
-    // base case
-    if (root == null) return 0;
-    // 左树深度
-    int left = maxdepth(root.left)
-    //右树深度
-    int right = maxdepth(root.left)
+var maxDepth = function (root) {
+  if (!root) return 0
 
-    return Math.max(left,right)+1
+  const left = maxDepth(root.left)
+  const right = maxDepth(root.right)
+
+  return Math.max(left, right) + 1
 }
-
 ```
 
 ### 后序操作
@@ -94,28 +90,20 @@ int maxdepth(TreeNode root) {
 
 直径就是指子树最大深度的和
 
-```java
-// 记录最大直径的长度
-int maxDiameter = 0;
+```js
+var diameterOfBinaryTree = function (root) {
+  let max = 0
+  function traverse(root, d) {
+    if (!root) return 0
 
-public int diameterOfBinaryTree(TreeNode root) {
-    maxDepth(root);
-    return maxDiameter;
+    let left = traverse(root.left, d + 1)
+    let right = traverse(root.right, d + 1)
+    max = Math.max(max, left + right)
+    return Math.max(left, right) + 1
+  }
+  traverse(root, 0)
+  return max
 }
-
-int maxDepth(TreeNode root) {
-    if (root == null) {
-        return 0;
-    }
-    int leftMax = maxDepth(root.left);
-    int rightMax = maxDepth(root.right);
-    // 后序位置，顺便计算最大直径
-    int myDiameter = leftMax + rightMax;
-    maxDiameter = Math.max(maxDiameter, myDiameter);
-
-    return 1 + Math.max(leftMax, rightMax);
-}
-
 ```
 
 - 翻转二叉树
