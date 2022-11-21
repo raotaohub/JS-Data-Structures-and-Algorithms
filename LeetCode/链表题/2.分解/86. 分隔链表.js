@@ -11,29 +11,37 @@
  * @param {number} x
  * @return {ListNode}
  */
+
+/**
+ * 一般来说，要返回新的链表，就需要用到 虚拟节点 的思想。
+ * 
+ * 主要思路是 创建 2个新表头，分别存储 > x && < x 的值，然后再将2个表接起来。
+ *   
+ * 1. 创建 d1 & p1 ，d2 & p2 ， 其中 p1 & p2 用来迭代
+ * 2. 迭代一遍 head，根据 val 与 x 的大小关系，分别存储于 p1 | p2
+ * 3. 用 小尾巴 p1.next 接着 大头 d2.next ，并返回小头 d1.next
+ */
+
 var partition = function (head, x) {
 
-    let list1 = l1 = new ListNode(-1) // 新建2个链表 和 对应的 虚拟头节点
-    let list2 = l2 = new ListNode(-1)
-    let dummy = head
+    let d1 = p1 = new ListNode(-1) // 小于x
+    let d2 = p2 = new ListNode(-1) // 大于x
 
-    // 把原链表根据x 1分为2 
-    while (dummy) {
 
-        if (dummy.val >= x) {
-            l2.next = new ListNode(dummy.val)
-            l2 = l2.next
+    while (head) {
+        if (head.val < x) {
+            p1.next = new ListNode(head.val)
+            p1 = p1.next
         } else {
-            l1.next = new ListNode(dummy.val)
-            l1 = l1.next
-
+            p2.next = new ListNode(head.val)
+            p2 = p2.next
         }
 
-        dummy = dummy.next
+        head = head.next
     }
 
-    // 重新拼接
-    l1.next = list2.next
 
-    return list1.next
+    p1.next = d2.next
+    return d1.next
+
 };
