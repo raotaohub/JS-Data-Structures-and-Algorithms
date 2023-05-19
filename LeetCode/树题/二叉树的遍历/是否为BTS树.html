@@ -65,7 +65,9 @@
         const val = root.val
         if (val <= min) return false
         if (val >= max) return false
-        return valid(root.left, min, val) && valid(root.right, val, max)
+
+        return valid(root.left, min, val)/* val 作为当前节点的值，在左树中，应该作为交大的值继续比较*/
+          && valid(root.right, val, max)/* val 作为当前节点的值，在他的右树中，应该作为较小的值继续比较*/
       }
       return valid(root)
     }

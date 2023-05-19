@@ -19,7 +19,7 @@
 
 ![img](https://tva1.sinaimg.cn/large/007S8ZIlly1ghlui7vcmwg30dw0dw3yl.gif)
 
-2. BFS 广度优先 层序遍历（一定是借助队列queue的结构，不论是构建或是遍历） 
+2. BFS 广度优先 层序遍历（一定是借助队列 queue 的结构，不论是构建或是遍历）
 
 - 迭代 1 种
 
@@ -123,6 +123,7 @@ function postOrderTraverse(root) {
 ### BFS（队列）广度优先 层序遍历
 
 - 迭代 1 种
+- 递归 1 种 （利用 bfs 自创的）
 
 树的最大深度
 
@@ -176,6 +177,27 @@ var maxDepth = function (root) {
   let left = maxDepth(root.left)
   let right = maxDepth(root.right)
   return Math.max(left, right) + 1
+}
+
+//DFS法
+var levelOrder = function (root) {
+  function dfs(root,  , res) {
+    if (!root) return
+    /*前序操作*/
+    if (res.length === depth && !res[depth]) {
+      res[depth] = []
+    }
+    res[depth].push(root.val)
+    /**/
+
+    dfs(root.left, depth + 1, res)
+    dfs(root.right, depth + 1, res)
+  }
+
+  const result = []
+  dfs(root, 0, result)
+
+  return result.length
 }
 ```
 

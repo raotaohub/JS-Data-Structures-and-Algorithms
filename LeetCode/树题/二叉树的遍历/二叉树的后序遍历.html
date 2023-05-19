@@ -13,15 +13,15 @@
     // 0
     var postorderTraversal = function (root) {
       let result = []
-      function bfs(root) {
+      function dfs(root) {
         if (!root) {
           return
         }
-        root.left && bfs(root.left)
-        root.right && bfs(root.right)
+        root.left && dfs(root.left)
+        root.right && dfs(root.right)
         result.push(root.val)
       }
-      bfs(root)
+      dfs(root)
       return result
     }
     // 1
