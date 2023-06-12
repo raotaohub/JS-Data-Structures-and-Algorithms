@@ -62,8 +62,6 @@
     };
 
     var isValid = function (s) {
-      if (s.length === 0 || s.length % 2 !== 0) return false;
-
       const map = new Map();
       map.set("{", "}");
       map.set("[", "]");
@@ -72,18 +70,19 @@
       const stack = [];
 
       for (let i = 0; i < s.length; i++) {
-        if (map.has(s[i])) {
-          stack.push(map.get(s[i]));
+        const t = s[i]
+        // 如果是左符号，则stack推入对应的右符号
+        if (map.has(t)) {
+          stack.push(map.get(t))
         } else {
-          const val = stack[stack.length - 1];
-
-          if (s[i] === val) stack.pop();
-          else return false;
+          // 如果是右符号，则取stack栈顶，和当前字符对比
+          if (t !== stack.pop()) return false;
         }
       }
 
-      return stack.length === 0;
-    };
+
+      return stack.length === 0
+    }
     console.log(isValid("{[]}"));
   </script>
 </body>
